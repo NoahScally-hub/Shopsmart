@@ -1,0 +1,97 @@
+{
+  "app": { "title": "ShopSmart" },
+  "tabs": {
+    "lists": "Listes",
+    "prices": "Prix",
+    "plan": "Plan",
+    "alerts": "Alertes",
+    "settings": "Réglages"
+  },
+  "common": {
+    "add": "Ajouter",
+    "back": "Retour",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "qty": "Quantité",
+    "name": "Article",
+    "price": "Prix",
+    "store": "Magasin",
+    "confirmDelete": "Supprimer « {{name}} » ? Ses prix seront aussi supprimés."
+  },
+  "lists": {
+    "title": "Mes listes de courses",
+    "newListPlaceholder": "Nom de la liste (ex. Courses de la semaine)",
+    "empty": "Aucune liste — créez la première ci-dessus. La première devient votre liste par défaut.",
+    "defaultBadge": "Par défaut",
+    "makeDefault": "Définir par défaut",
+    "deleteConfirm": "Supprimer la liste « {{name}} » et tous ses articles ?",
+    "itemsCount_one": "{{count}} article",
+    "itemsCount_other": "{{count}} articles",
+    "itemsCount_many": "{{count}} articles"
+  },
+  "items": {
+    "addPlaceholder": "Ajouter un article…",
+    "empty": "Cette liste est vide. Ajoutez des articles au clavier ou au micro.",
+    "clearChecked": "Retirer les articles cochés",
+    "exportCsv": "Exporter CSV",
+    "importCsv": "Importer CSV",
+    "voiceStart": "Dicter un article",
+    "voiceStop": "Arrêter l'écoute"
+  },
+  "prices": {
+    "storesTitle": "Magasins et prix",
+    "addStorePlaceholder": "Ajouter un magasin (ex. Carrefour)",
+    "distanceKm": "km",
+    "noStores": "Ajoutez vos magasins habituels avec leur distance depuis chez vous.",
+    "pricesTitle": "Enregistrer un prix",
+    "itemPlaceholder": "Article (ex. lait)",
+    "onSale": "En promo",
+    "compareTitle": "Comparaison des prix",
+    "noPrices": "Notez les prix vus en magasin ou en catalogue pour les comparer ici.",
+    "sale": "PROMO"
+  },
+  "plan": {
+    "title": "Plan de courses",
+    "chooseList": "Liste :",
+    "itemsCost": "Articles",
+    "travelCost": "Trajet",
+    "total": "Total estimé",
+    "missing_one": "{{count}} article sans prix dans ce magasin",
+    "missing_other": "{{count}} articles sans prix dans ce magasin",
+    "missing_many": "{{count}} articles sans prix dans ce magasin",
+    "bestValue": "Meilleur choix",
+    "multiStop": "Plan multi-magasins",
+    "multiStopHint": "Achète chaque article là où il est le moins cher, trajet compté pour chaque arrêt.",
+    "recordTrip": "J'ai fait mes courses ici",
+    "tripRecorded": "Passage chez {{store}} enregistré dans l'historique",
+    "noData": "Ajoutez des magasins et des prix pour générer un plan.",
+    "gasNote": "Coût du trajet = aller-retour × consommation de votre voiture × prix du carburant (voir Réglages). Décochez des magasins pour les exclure."
+  },
+  "alerts": {
+    "title": "Alertes promo",
+    "empty": "Aucun article de vos listes n'est en promo. Cochez « En promo » dans l'onglet Prix.",
+    "saleAt": "en promo chez {{store}}"
+  },
+  "settings": {
+    "title": "Réglages",
+    "language": "Langue",
+    "theme": "Thème",
+    "themeSystem": "Système",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "accent": "Couleur d'accent",
+    "features": "Fonctionnalités (masquez ce que vous n'utilisez pas)",
+    "fPrices": "Comparaison des prix",
+    "fPlan": "Plan de courses",
+    "fAlerts": "Alertes promo",
+    "fVoice": "Dictée vocale",
+    "fRecipes": "Suggestions de recettes (bientôt)",
+    "gasPrice": "Prix du carburant au litre",
+    "fuelUse": "Consommation (L/100 km)",
+    "currency": "Symbole monétaire",
+    "data": "Vos données",
+    "exportAll": "Tout exporter (JSON)",
+    "wipe": "Effacer toutes les données",
+    "wipeConfirm": "Effacer TOUTES les listes, prix et réglages sur cet appareil ? Action irréversible."
+  }
+}

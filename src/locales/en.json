@@ -1,0 +1,95 @@
+{
+  "app": { "title": "ShopSmart" },
+  "tabs": {
+    "lists": "Lists",
+    "prices": "Prices",
+    "plan": "Plan",
+    "alerts": "Alerts",
+    "settings": "Settings"
+  },
+  "common": {
+    "add": "Add",
+    "back": "Back",
+    "save": "Save",
+    "delete": "Delete",
+    "qty": "Quantity",
+    "name": "Item",
+    "price": "Price",
+    "store": "Store",
+    "confirmDelete": "Delete \"{{name}}\"? Its prices will be removed too."
+  },
+  "lists": {
+    "title": "My shopping lists",
+    "newListPlaceholder": "New list name (e.g. Weekly groceries)",
+    "empty": "No lists yet — create your first one above. The first list becomes your default.",
+    "defaultBadge": "Default",
+    "makeDefault": "Make default",
+    "deleteConfirm": "Delete list \"{{name}}\" and all its items?",
+    "itemsCount_one": "{{count}} item",
+    "itemsCount_other": "{{count}} items"
+  },
+  "items": {
+    "addPlaceholder": "Add an item…",
+    "empty": "This list is empty. Add items by typing or with the microphone.",
+    "clearChecked": "Remove checked items",
+    "exportCsv": "Export CSV",
+    "importCsv": "Import CSV",
+    "voiceStart": "Dictate item",
+    "voiceStop": "Stop listening"
+  },
+  "prices": {
+    "storesTitle": "Stores & prices",
+    "addStorePlaceholder": "Add a store (e.g. Walmart)",
+    "distanceKm": "km away",
+    "noStores": "Add the stores you shop at, with their distance from home.",
+    "pricesTitle": "Record a price",
+    "itemPlaceholder": "Item (e.g. milk)",
+    "onSale": "On sale",
+    "compareTitle": "Price comparison",
+    "noPrices": "Record prices you see in store or in flyers to compare them here.",
+    "sale": "SALE"
+  },
+  "plan": {
+    "title": "Shopping plan",
+    "chooseList": "List:",
+    "itemsCost": "Items",
+    "travelCost": "Travel",
+    "total": "Estimated total",
+    "missing_one": "{{count}} item has no price at this store",
+    "missing_other": "{{count}} items have no price at this store",
+    "bestValue": "Best value",
+    "multiStop": "Multi-stop plan",
+    "multiStopHint": "Buys each item where it is cheapest, counting travel to every stop.",
+    "recordTrip": "I shopped here",
+    "tripRecorded": "Trip at {{store}} saved to history",
+    "noData": "Add stores and record some prices to generate a plan.",
+    "gasNote": "Travel cost = round-trip distance × your car's consumption × gas price (see Settings). Uncheck stores above to exclude them."
+  },
+  "alerts": {
+    "title": "Sale alerts",
+    "empty": "No items on your lists are on sale right now. Mark a price as \"on sale\" in the Prices tab.",
+    "saleAt": "on sale at {{store}}"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "accent": "Accent color",
+    "features": "Features (hide what you don't use)",
+    "fPrices": "Price comparison",
+    "fPlan": "Shopping plan",
+    "fAlerts": "Sale alerts",
+    "fVoice": "Voice dictation",
+    "fRecipes": "Recipe suggestions (coming soon)",
+    "gasPrice": "Gas price per liter",
+    "fuelUse": "Car consumption (L/100 km)",
+    "currency": "Currency symbol",
+    "data": "Your data",
+    "exportAll": "Export everything (JSON)",
+    "wipe": "Erase all data",
+    "wipeConfirm": "Erase ALL lists, prices and settings on this device? This cannot be undone."
+  }
+}

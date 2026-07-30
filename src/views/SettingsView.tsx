@@ -1,0 +1,158 @@
+import { useTranslation } from "react-i18next";
+import db from "../db";
+import {
+  useSettings,
+  type Accent,
+  type Language,
+  type Theme,
+  type FeatureToggles
+} from "../settings";
+import { downloadFile } from "../csv";
+
+const ACCENTS: Array<{ id: Accent; color: string }> = [
+  { id: "green", color: "#16a34a" },
+  { id: "blue", color: "#2563eb" },
+  { id: "purple", color: "#7c3aed" },
+  { id: "orange", color: "#ea580c" }
+];
+
+export default function SettingsView() {
+  const { t } = useTranslation();
+  const { settings, update } = useSettings();
+
+  const setFeature = (key: keyof FeatureToggles, value: boolean) =>
+    update({ features: { ...settings.features, [key]: value } });
+
+  const exportAll = async () => {
+    const data = {
+      exportedAt: new Date().toISOString(),
+      lists: await db.lists.toArray(),
+      items: await db.items.toArray(),
+      stores: await db.stores.toArray(),
+      prices: await db.prices.toArray(),
+      trips: await db.trips.toArray(),
+      settings
+    };
+    downloadFile(
+      "shopsmart-backup.json",
+      JSON.stringify(data, null, 2),
+      "application/json"
+    );
+  };
+
+  const wipe = async () => {
+    if (!confirm(t("settings.wipeConfirm"))) return;
+    await db.delete();
+    localStorage.removeItem("shopsmart-settings");
+    location.reload();
+  };
+
+  const features: Array<{ key: keyof FeatureToggles; label: string }> = [
+    { key: "prices", label: t("settings.fPrices") },
+    { key: "plan", label: t("settings.fPlan") },
+    { key: "alerts", label: t("settings.fAlerts") },
+    { key: "voice", label: t("settings.fVoice") },
+    { key: "recipes", label: t("settings.fRecipes") }
+  ];
+
+  return (
+    <section>
+      <h2>{t("settings.title")}</h2>
+
+      <div className="settings-group">
+        <label className="line">
+          {t("settings.language")}
+          <select
+            value={settings.language}
+            onChange={(e) => update({ language: e.target.value as Language })}
+          >
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+          </select>
+        </label>
+        <label className="line">
+          {t("settings.theme")}
+          <select
+            value={settings.theme}
+            onChange={(e) => update({ theme: e.target.value as Theme })}
+          >
+            <option value="system">{t("settings.themeSystem")}</option>
+            <option value="light">{t("settings.themeLight")}</option>
+            <option value="dark">{t("settings.themeDark")}</option>
+          </select>
+        </label>
+        <div className="line" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0" }}>
+          <span>{t("settings.accent")}</span>
+          <div className="swatches">
+            {ACCENTS.map((a) => (
+              <button
+                key={a.id}
+                className={settings.accent === a.id ? "swatch selected" : "swatch"}
+                style={{ background: a.color }}
+                aria-label={a.id}
+                onClick={() => update({ accent: a.id })}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="settings-group">
+        <strong>{t("settings.features")}</strong>
+        {features.map((f) => (
+          <label className="line" key={f.key}>
+            {f.label}
+            <input
+              type="checkbox"
+              checked={settings.features[f.key]}
+              onChange={(e) => setFeature(f.key, e.target.checked)}
+            />
+          </label>
+        ))}
+      </div>
+
+      <div className="settings-group">
+        <label className="line">
+          {t("settings.gasPrice")}
+          <input
+            type="number"
+            min="0"
+            step="0.01"
+            value={settings.gasPricePerL}
+            onChange={(e) => update({ gasPricePerL: Number(e.target.value) || 0 })}
+          />
+        </label>
+        <label className="line">
+          {t("settings.fuelUse")}
+          <input
+            type="number"
+            min="0"
+            step="0.1"
+            value={settings.fuelLper100km}
+            onChange={(e) => update({ fuelLper100km: Number(e.target.value) || 0 })}
+          />
+        </label>
+        <label className="line">
+          {t("settings.currency")}
+          <input
+            style={{ width: 60 }}
+            maxLength={3}
+            value={settings.currency}
+            onChange={(e) => update({ currency: e.target.value })}
+          />
+        </label>
+      </div>
+
+      <div className="settings-group">
+        <strong>{t("settings.data")}</strong>
+        <div className="row" style={{ marginTop: 8 }}>
+          <button onClick={exportAll}>{t("settings.exportAll")}</button>
+          <button className="danger" onClick={wipe}>
+            {t("settings.wipe")}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}

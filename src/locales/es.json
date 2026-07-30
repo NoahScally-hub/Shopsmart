@@ -1,0 +1,97 @@
+{
+  "app": { "title": "ShopSmart" },
+  "tabs": {
+    "lists": "Listas",
+    "prices": "Precios",
+    "plan": "Plan",
+    "alerts": "Alertas",
+    "settings": "Ajustes"
+  },
+  "common": {
+    "add": "Añadir",
+    "back": "Atrás",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "qty": "Cantidad",
+    "name": "Artículo",
+    "price": "Precio",
+    "store": "Tienda",
+    "confirmDelete": "¿Eliminar «{{name}}»? Sus precios también se eliminarán."
+  },
+  "lists": {
+    "title": "Mis listas de la compra",
+    "newListPlaceholder": "Nombre de la lista (ej. Compra semanal)",
+    "empty": "Aún no hay listas: crea la primera arriba. La primera será tu lista predeterminada.",
+    "defaultBadge": "Predeterminada",
+    "makeDefault": "Hacer predeterminada",
+    "deleteConfirm": "¿Eliminar la lista «{{name}}» y todos sus artículos?",
+    "itemsCount_one": "{{count}} artículo",
+    "itemsCount_other": "{{count}} artículos",
+    "itemsCount_many": "{{count}} artículos"
+  },
+  "items": {
+    "addPlaceholder": "Añadir un artículo…",
+    "empty": "Esta lista está vacía. Añade artículos escribiendo o con el micrófono.",
+    "clearChecked": "Quitar artículos marcados",
+    "exportCsv": "Exportar CSV",
+    "importCsv": "Importar CSV",
+    "voiceStart": "Dictar artículo",
+    "voiceStop": "Dejar de escuchar"
+  },
+  "prices": {
+    "storesTitle": "Tiendas y precios",
+    "addStorePlaceholder": "Añadir una tienda (ej. Mercadona)",
+    "distanceKm": "km",
+    "noStores": "Añade tus tiendas habituales con su distancia desde casa.",
+    "pricesTitle": "Registrar un precio",
+    "itemPlaceholder": "Artículo (ej. leche)",
+    "onSale": "En oferta",
+    "compareTitle": "Comparación de precios",
+    "noPrices": "Apunta los precios que veas en tienda o en folletos para compararlos aquí.",
+    "sale": "OFERTA"
+  },
+  "plan": {
+    "title": "Plan de compra",
+    "chooseList": "Lista:",
+    "itemsCost": "Artículos",
+    "travelCost": "Desplazamiento",
+    "total": "Total estimado",
+    "missing_one": "{{count}} artículo sin precio en esta tienda",
+    "missing_other": "{{count}} artículos sin precio en esta tienda",
+    "missing_many": "{{count}} artículos sin precio en esta tienda",
+    "bestValue": "Mejor opción",
+    "multiStop": "Plan multi-tienda",
+    "multiStopHint": "Compra cada artículo donde es más barato, contando el desplazamiento a cada parada.",
+    "recordTrip": "Compré aquí",
+    "tripRecorded": "Visita a {{store}} guardada en el historial",
+    "noData": "Añade tiendas y registra precios para generar un plan.",
+    "gasNote": "Coste de desplazamiento = ida y vuelta × consumo de tu coche × precio de la gasolina (ver Ajustes). Desmarca tiendas para excluirlas."
+  },
+  "alerts": {
+    "title": "Alertas de ofertas",
+    "empty": "Ningún artículo de tus listas está en oferta. Marca un precio como «En oferta» en la pestaña Precios.",
+    "saleAt": "en oferta en {{store}}"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "theme": "Tema",
+    "themeSystem": "Sistema",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "accent": "Color de acento",
+    "features": "Funciones (oculta lo que no uses)",
+    "fPrices": "Comparación de precios",
+    "fPlan": "Plan de compra",
+    "fAlerts": "Alertas de ofertas",
+    "fVoice": "Dictado por voz",
+    "fRecipes": "Sugerencias de recetas (próximamente)",
+    "gasPrice": "Precio de la gasolina por litro",
+    "fuelUse": "Consumo del coche (L/100 km)",
+    "currency": "Símbolo de moneda",
+    "data": "Tus datos",
+    "exportAll": "Exportar todo (JSON)",
+    "wipe": "Borrar todos los datos",
+    "wipeConfirm": "¿Borrar TODAS las listas, precios y ajustes de este dispositivo? No se puede deshacer."
+  }
+}
