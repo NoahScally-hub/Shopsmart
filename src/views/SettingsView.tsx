@@ -7,7 +7,12 @@ import {
   type Theme,
   type FeatureToggles
 } from "../settings";
+import { lazy, Suspense } from "react";
 import { downloadFile } from "../csv";
+
+// supabase-js is ~60 kB gzipped — keep it out of the initial bundle and load it
+// only when the user actually opens Settings.
+const CloudSync = lazy(() => import("./CloudSync"));
 
 const ACCENTS: Array<{ id: Accent; color: string }> = [
   { id: "green", color: "#047857" },
@@ -143,6 +148,10 @@ export default function SettingsView() {
           />
         </label>
       </div>
+
+      <Suspense fallback={<div className="settings-group" style={{ height: 96 }} />}>
+        <CloudSync />
+      </Suspense>
 
       <div className="settings-group">
         <strong>{t("settings.data")}</strong>

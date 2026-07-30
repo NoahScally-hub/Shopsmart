@@ -1,6 +1,10 @@
 // 0|1 instead of boolean because IndexedDB indexes can't contain booleans.
+// remoteId is the primary key of the matching row in Supabase; absent until
+// the row has been pushed to the cloud at least once.
+
 export interface ShoppingList {
   id?: number;
+  remoteId?: number;
   name: string;
   isDefault: 0 | 1;
   createdAt: number;
@@ -8,6 +12,7 @@ export interface ShoppingList {
 
 export interface ListItem {
   id?: number;
+  remoteId?: number;
   listId: number;
   name: string;
   qty: number;
@@ -18,12 +23,14 @@ export interface ListItem {
 
 export interface Store {
   id?: number;
+  remoteId?: number;
   name: string;
   distanceKm: number;
 }
 
 export interface PriceEntry {
   id?: number;
+  remoteId?: number;
   itemName: string; // normalized (trimmed, lowercased) so it matches across lists
   storeId: number;
   price: number;
@@ -33,8 +40,17 @@ export interface PriceEntry {
 
 export interface Trip {
   id?: number;
+  remoteId?: number;
   date: number;
   storeId: number;
   total: number;
   itemCount: number;
+}
+
+export type SyncTable = "lists" | "items" | "stores" | "prices" | "trips";
+
+export interface Tombstone {
+  id?: number;
+  table: SyncTable;
+  remoteId: number;
 }

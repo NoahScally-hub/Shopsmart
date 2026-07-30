@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
-import db, { normalizeItemName } from "../db";
+import db, { normalizeItemName, recordTombstone } from "../db";
 import { useSettings } from "../settings";
 import { IconTrash, IconX } from "../icons";
 
@@ -30,7 +30,10 @@ export default function PricesView() {
 
   const removeStore = async (id: number, name: string) => {
     if (!confirm(t("common.confirmDelete", { name }))) return;
-    await db.transaction("rw", db.stores, db.prices, async () => {
+    await db.transaction("rw", db.stores, db.prices, db.tombstones, async () => {
+      const doomed = await db.prices.where("storeId").equals(id).toArray();
+      for (const p of doomed) await recordTombstone("prices", p.remoteId);
+      await recordTombstone("stores", (await db.stores.get(id))?.remoteId);
       await db.prices.where("storeId").equals(id).delete();
       await db.stores.delete(id);
     });
@@ -60,7 +63,12 @@ export default function PricesView() {
     setOnSale(false);
   };
 
-  const removePrice = (id: number) => db.prices.delete(id);
+  const removePrice = async (id: number) => {
+    await db.transaction("rw", db.prices, db.tombstones, async () => {
+      await recordTombstone("prices", (await db.prices.get(id))?.remoteId);
+      await db.prices.delete(id);
+    });
+  };
 
   const itemSuggestions = [
     ...new Set((listItems ?? []).map((i) => normalizeItemName(i.name)))

@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
-import db from "../db";
+import db, { recordTombstone } from "../db";
 import { IconStar, IconTrash } from "../icons";
 import ListDetailView from "./ListDetailView";
 
@@ -40,7 +40,10 @@ export default function ListsView() {
 
   const remove = async (id: number, listName: string) => {
     if (!confirm(t("lists.deleteConfirm", { name: listName }))) return;
-    await db.transaction("rw", db.lists, db.items, async () => {
+    await db.transaction("rw", db.lists, db.items, db.tombstones, async () => {
+      const doomed = await db.items.where("listId").equals(id).toArray();
+      for (const it of doomed) await recordTombstone("items", it.remoteId);
+      await recordTombstone("lists", (await db.lists.get(id))?.remoteId);
       await db.items.where("listId").equals(id).delete();
       await db.lists.delete(id);
     });

@@ -72,6 +72,23 @@
     "empty": "Aucun article de vos listes n'est en promo. Cochez « En promo » dans l'onglet Prix.",
     "saleAt": "en promo chez {{store}}"
   },
+  "cloud": {
+    "title": "Synchronisation",
+    "description": "Connectez-vous pour sauvegarder vos listes et vos prix et les retrouver sur un autre appareil. Vos données restent privées.",
+    "notConfigured": "La synchronisation est désactivée dans cette version — l'application fonctionne hors ligne sur cet appareil.",
+    "email": "Courriel",
+    "password": "Mot de passe",
+    "signIn": "Se connecter",
+    "signUp": "Créer un compte",
+    "signOut": "Se déconnecter",
+    "signedInAs": "Connecté en tant que {{email}}",
+    "syncNow": "Synchroniser",
+    "syncing": "Synchronisation…",
+    "syncDone": "Synchronisé — {{pushed}} envoyés, {{pulled}} reçus.",
+    "lastSync": "Dernière synchro : {{when}}",
+    "never": "Pas encore synchronisé sur cet appareil.",
+    "checkEmail": "Vérifiez votre courriel pour confirmer le compte, puis connectez-vous."
+  },
   "settings": {
     "title": "Réglages",
     "language": "Langue",

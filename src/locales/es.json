@@ -72,6 +72,23 @@
     "empty": "Ningún artículo de tus listas está en oferta. Marca un precio como «En oferta» en la pestaña Precios.",
     "saleAt": "en oferta en {{store}}"
   },
+  "cloud": {
+    "title": "Sincronización",
+    "description": "Inicia sesión para guardar tus listas y precios y usarlos en otro dispositivo. Tus datos siguen siendo privados.",
+    "notConfigured": "La sincronización está desactivada en esta versión: la app funciona sin conexión en este dispositivo.",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "signIn": "Iniciar sesión",
+    "signUp": "Crear cuenta",
+    "signOut": "Cerrar sesión",
+    "signedInAs": "Sesión iniciada como {{email}}",
+    "syncNow": "Sincronizar",
+    "syncing": "Sincronizando…",
+    "syncDone": "Sincronizado: {{pushed}} enviados, {{pulled}} recibidos.",
+    "lastSync": "Última sincronización: {{when}}",
+    "never": "Aún no sincronizado en este dispositivo.",
+    "checkEmail": "Revisa tu correo para confirmar la cuenta y luego inicia sesión."
+  },
   "settings": {
     "title": "Ajustes",
     "language": "Idioma",

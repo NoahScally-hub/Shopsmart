@@ -36,7 +36,7 @@ ShopSmart is a **Progressive Web App** built with React + TypeScript + Vite:
 | Themes (light/dark/system + 4 accent colors) | ✅ |
 | Feature toggles — hidden features remove their tab entirely | ✅ |
 | Backup: export all data as JSON | ✅ |
-| Supabase sync + multi-device | 🔜 (schema ready, needs your Supabase project) |
+| Supabase account + cloud sync across devices | ✅ |
 | Scraped store prices via Playwright MCP | 🔜 |
 | Recipe suggestions | 🔜 (toggle already in Settings, off by default) |
 
@@ -77,21 +77,44 @@ To activate it:
 
 1. Create a free project at [supabase.com](https://supabase.com).
 2. Run the migration in the SQL editor (or via the Supabase MCP below).
-3. Create a personal access token (Account → Access Tokens) and set the
-   `SUPABASE_ACCESS_TOKEN` and `SUPABASE_PROJECT_REF` environment variables so
-   the MCP server can manage the project.
+3. Copy `.env.example` to `.env` and fill in `VITE_SUPABASE_URL` and
+   `VITE_SUPABASE_ANON_KEY` (Project Settings → API Keys). The anon/publishable
+   key is safe in client code — access is governed by the RLS policies, not by
+   the key.
+
+## Cloud sync
+
+Settings → **Cloud sync**: create an account or sign in with an email and
+password, then press **Sync now**. Sync is deliberately explicit (a button, not
+a background daemon) so the app stays fast and predictable offline.
+
+How it works (`src/sync.ts`):
+
+- Every local row keeps a `remoteId` pointing at its Supabase row, so the two
+  databases stay matched without changing the server schema.
+- Sync **pulls first, then pushes only rows whose fields actually differ**, so
+  repeat syncs cost one request per table instead of one per row.
+- Deletions are recorded as **tombstones** and pushed before the pull, so a
+  deleted list can't be resurrected by the next sync.
+- Conflicts resolve last-write-wins per row. Preferences are pushed up (for the
+  insights data) but never pulled down over your local settings.
+
+`supabase-js` is ~60 kB gzipped, so it is **code-split** into its own chunk that
+loads only when Settings opens — the initial app bundle stays ~122 kB gzipped.
 
 ## MCP servers (`.mcp.json`)
 
 | Server | Purpose | Needs |
 | --- | --- | --- |
 | `github` (remote, OAuth) | Repo management, issues, PRs | OAuth sign-in via `/mcp`, free |
-| `supabase` | Run migrations, query the relational DB | Free Supabase account + access token |
+| `supabase` | Run migrations, query the relational DB | Free Supabase account; authenticates over OAuth via `claude /mcp` — no API key stored |
 | `playwright` | Web scraping for store prices/flyers (free, local browser — chosen over AgentQL/Firecrawl which require API keys) | Nothing |
 | `shadcn-ui` | UI component reference for design work | Nothing |
 
-Restart Claude Code after editing `.mcp.json`; approve the servers when
-prompted, and run `/mcp` to complete the GitHub OAuth sign-in.
+Restart Claude Code after editing `.mcp.json` and approve the servers when
+prompted. The GitHub and Supabase servers are remote and use OAuth: run
+`claude` in a **regular terminal** (not an IDE extension), then `/mcp`, select
+the server and choose *Authenticate*.
 
 ## Feasibility notes (free-tier constraints)
 

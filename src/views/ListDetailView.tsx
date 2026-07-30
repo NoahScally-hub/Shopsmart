@@ -1,7 +1,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
-import db from "../db";
+import db, { recordTombstone } from "../db";
 import { itemsToCsv, csvToItems, downloadFile } from "../csv";
 import { useSpeech } from "../voice";
 import { useSettings } from "../settings";
@@ -45,10 +45,26 @@ export default function ListDetailView({
   const toggle = (id: number, checked: 0 | 1) =>
     db.items.update(id, { checked: checked ? 0 : 1 });
 
-  const removeItem = (id: number) => db.items.delete(id);
+  const removeItem = async (id: number) => {
+    await db.transaction("rw", db.items, db.tombstones, async () => {
+      await recordTombstone("items", (await db.items.get(id))?.remoteId);
+      await db.items.delete(id);
+    });
+  };
 
-  const clearChecked = () =>
-    db.items.where("listId").equals(listId).and((i) => i.checked === 1).delete();
+  const clearChecked = async () => {
+    await db.transaction("rw", db.items, db.tombstones, async () => {
+      const doomed = await db.items
+        .where("listId")
+        .equals(listId)
+        .and((i) => i.checked === 1)
+        .toArray();
+      for (const it of doomed) {
+        await recordTombstone("items", it.remoteId);
+        await db.items.delete(it.id!);
+      }
+    });
+  };
 
   const exportCsv = () =>
     downloadFile(`${(list?.name ?? "list").replace(/[^\w\- ]/g, "")}.csv`, itemsToCsv(items ?? []));
