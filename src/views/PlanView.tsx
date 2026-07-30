@@ -171,7 +171,7 @@ export default function PlanView() {
           <li className={!best || multi.total < best.total ? "card best" : "card"}>
             <div className="row spread">
               <strong>
-                🧭 {t("plan.multiStop")} ({multi.stops.map((s) => s.name).join(" + ")})
+                {t("plan.multiStop")} ({multi.stops.map((s) => s.name).join(" + ")})
               </strong>
               {(!best || multi.total < best.total) && (
                 <span className="pill">{t("plan.bestValue")}</span>
@@ -200,7 +200,7 @@ export default function PlanView() {
             }
           >
             <div className="row spread">
-              <strong>🏪 {p.store.name}</strong>
+              <strong>{p.store.name}</strong>
               {idx === 0 && (!multi || p.total <= multi.total) && (
                 <span className="pill">{t("plan.bestValue")}</span>
               )}

@@ -5,6 +5,7 @@ import db from "../db";
 import { itemsToCsv, csvToItems, downloadFile } from "../csv";
 import { useSpeech } from "../voice";
 import { useSettings } from "../settings";
+import { IconBack, IconDownload, IconUpload, IconMic, IconX } from "../icons";
 
 export default function ListDetailView({
   listId,
@@ -65,10 +66,16 @@ export default function ListDetailView({
   return (
     <section>
       <div className="row spread">
-        <button onClick={onBack}>← {t("common.back")}</button>
-        <div className="row">
-          <button onClick={exportCsv}>{t("items.exportCsv")}</button>
-          <button onClick={() => fileRef.current?.click()}>{t("items.importCsv")}</button>
+        <button className="ghost" onClick={onBack}>
+          <IconBack size={16} /> {t("common.back")}
+        </button>
+        <div className="row" style={{ marginBottom: 0 }}>
+          <button onClick={exportCsv}>
+            <IconDownload size={15} /> {t("items.exportCsv")}
+          </button>
+          <button onClick={() => fileRef.current?.click()}>
+            <IconUpload size={15} /> {t("items.importCsv")}
+          </button>
           <input
             ref={fileRef}
             type="file"
@@ -100,7 +107,7 @@ export default function ListDetailView({
             title={speech.listening ? t("items.voiceStop") : t("items.voiceStart")}
             onClick={() => (speech.listening ? speech.stop() : speech.start())}
           >
-            🎤
+            <IconMic size={17} />
           </button>
         )}
         <button className="primary" type="submit">
@@ -120,8 +127,13 @@ export default function ListDetailView({
               {it.name}
               {it.qty > 1 ? <span className="muted"> ×{it.qty}</span> : null}
             </span>
-            <button className="danger" onClick={() => removeItem(it.id!)}>
-              ✕
+            <button
+              className="ghost danger"
+              title={t("common.delete")}
+              aria-label={t("common.delete")}
+              onClick={() => removeItem(it.id!)}
+            >
+              <IconX size={15} />
             </button>
           </li>
         ))}

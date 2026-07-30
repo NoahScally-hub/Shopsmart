@@ -14,8 +14,8 @@ export default defineConfig({
         name: "ShopSmart",
         short_name: "ShopSmart",
         description: "Smart shopping lists, price comparison and trip planning",
-        theme_color: "#16a34a",
-        background_color: "#ffffff",
+        theme_color: "#047857",
+        background_color: "#fafaf9",
         display: "standalone",
         icons: [
           {

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
 import db, { normalizeItemName } from "../db";
 import { useSettings } from "../settings";
+import { IconTrash, IconX } from "../icons";
 
 export default function PricesView() {
   const { t } = useTranslation();
@@ -102,8 +103,13 @@ export default function PricesView() {
               <strong>{s.name}</strong>{" "}
               <span className="muted">{s.distanceKm} km</span>
             </span>
-            <button className="danger" onClick={() => removeStore(s.id!, s.name)}>
-              ✕
+            <button
+              className="ghost danger"
+              title={t("common.delete")}
+              aria-label={t("common.delete")}
+              onClick={() => removeStore(s.id!, s.name)}
+            >
+              <IconTrash size={17} />
             </button>
           </li>
         ))}
@@ -191,11 +197,13 @@ export default function PricesView() {
                                   <span className="pill sale">{t("prices.sale")}</span>
                                 ) : null}{" "}
                                 <button
-                                  className="danger linklike"
+                                  className="ghost danger"
+                                  style={{ padding: 2, verticalAlign: "middle" }}
                                   title={t("common.delete")}
+                                  aria-label={t("common.delete")}
                                   onClick={() => removePrice(cell.id)}
                                 >
-                                  ✕
+                                  <IconX size={12} />
                                 </button>
                               </td>
                             );

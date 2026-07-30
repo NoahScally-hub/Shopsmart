@@ -10,10 +10,10 @@ import {
 import { downloadFile } from "../csv";
 
 const ACCENTS: Array<{ id: Accent; color: string }> = [
-  { id: "green", color: "#16a34a" },
-  { id: "blue", color: "#2563eb" },
-  { id: "purple", color: "#7c3aed" },
-  { id: "orange", color: "#ea580c" }
+  { id: "green", color: "#047857" },
+  { id: "blue", color: "#4f46e5" },
+  { id: "purple", color: "#7e22ce" },
+  { id: "orange", color: "#c2410c" }
 ];
 
 export default function SettingsView() {

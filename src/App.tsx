@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
 import db, { normalizeItemName } from "./db";
 import { useSettings } from "./settings";
+import { IconList, IconTag, IconRoute, IconBell, IconSliders } from "./icons";
 import ListsView from "./views/ListsView";
 import PricesView from "./views/PricesView";
 import PlanView from "./views/PlanView";
@@ -11,12 +12,12 @@ import SettingsView from "./views/SettingsView";
 
 type Tab = "lists" | "prices" | "plan" | "alerts" | "settings";
 
-const ICONS: Record<Tab, string> = {
-  lists: "📝",
-  prices: "🏷️",
-  plan: "🗺️",
-  alerts: "🔔",
-  settings: "⚙️"
+const ICONS: Record<Tab, ReactNode> = {
+  lists: <IconList />,
+  prices: <IconTag />,
+  plan: <IconRoute />,
+  alerts: <IconBell />,
+  settings: <IconSliders />
 };
 
 export default function App() {
@@ -53,7 +54,10 @@ export default function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <h1>🛒 {t("app.title")}</h1>
+        <h1>
+          {t("app.title")}
+          <span className="dot">.</span>
+        </h1>
       </header>
       <main className="content">
         {active === "lists" && <ListsView />}
@@ -69,7 +73,7 @@ export default function App() {
             className={active === x.id ? "tab active" : "tab"}
             onClick={() => setTab(x.id)}
           >
-            <span className="tab-icon">{ICONS[x.id]}</span>
+            {ICONS[x.id]}
             <span>{t(`tabs.${x.id}`)}</span>
             {x.badge ? <span className="badge">{x.badge}</span> : null}
           </button>

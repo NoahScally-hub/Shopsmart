@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
 import db from "../db";
+import { IconStar, IconTrash } from "../icons";
 import ListDetailView from "./ListDetailView";
 
 export default function ListsView() {
@@ -71,12 +72,22 @@ export default function ListsView() {
               </div>
             </button>
             {!l.isDefault && (
-              <button title={t("lists.makeDefault")} onClick={() => makeDefault(l.id!)}>
-                ☆
+              <button
+                className="ghost"
+                title={t("lists.makeDefault")}
+                aria-label={t("lists.makeDefault")}
+                onClick={() => makeDefault(l.id!)}
+              >
+                <IconStar size={17} />
               </button>
             )}
-            <button className="danger" onClick={() => remove(l.id!, l.name)}>
-              ✕
+            <button
+              className="ghost danger"
+              title={t("common.delete")}
+              aria-label={t("common.delete")}
+              onClick={() => remove(l.id!, l.name)}
+            >
+              <IconTrash size={17} />
             </button>
           </li>
         ))}
