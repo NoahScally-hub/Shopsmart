@@ -106,15 +106,24 @@ loads only when Settings opens — the initial app bundle stays ~122 kB gzipped.
 
 | Server | Purpose | Needs |
 | --- | --- | --- |
-| `github` (remote, OAuth) | Repo management, issues, PRs | OAuth sign-in via `/mcp`, free |
+| `github` (local binary) | Repo management, issues, PRs | Free — a fine-grained Personal Access Token (GitHub's OAuth server doesn't support the Dynamic Client Registration Claude Code's remote-MCP OAuth expects, so the local server + PAT is what actually works here) |
 | `supabase` | Run migrations, query the relational DB | Free Supabase account; authenticates over OAuth via `claude /mcp` — no API key stored |
 | `playwright` | Web scraping for store prices/flyers (free, local browser — chosen over AgentQL/Firecrawl which require API keys) | Nothing |
 | `shadcn-ui` | UI component reference for design work | Nothing |
 
 Restart Claude Code after editing `.mcp.json` and approve the servers when
-prompted. The GitHub and Supabase servers are remote and use OAuth: run
-`claude` in a **regular terminal** (not an IDE extension), then `/mcp`, select
-the server and choose *Authenticate*.
+prompted.
+
+- **Supabase** is remote and uses OAuth: run `claude` in a **regular
+  terminal** (not an IDE extension), then `/mcp`, select `supabase`, choose
+  *Authenticate*.
+- **GitHub** runs the official [github-mcp-server](https://github.com/github/github-mcp-server)
+  binary locally (downloaded to `%LOCALAPPDATA%\github-mcp-server`),
+  authenticated with a fine-grained Personal Access Token set as the
+  `GITHUB_PERSONAL_ACCESS_TOKEN` environment variable — GitHub's OAuth server
+  doesn't support Dynamic Client Registration, which Claude Code's remote-MCP
+  OAuth flow requires, so the hosted `api.githubcopilot.com/mcp/` endpoint
+  cannot complete a login from this or most non-Copilot MCP clients.
 
 ## Feasibility notes (free-tier constraints)
 

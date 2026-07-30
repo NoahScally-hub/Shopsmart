@@ -1,8 +1,10 @@
 {
   "mcpServers": {
     "github": {
-      "type": "http",
-      "url": "https://api.githubcopilot.com/mcp/"
+      "command": "C:\\Users\\scall\\AppData\\Local\\github-mcp-server\\wrapper.cmd",
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
     },
     "supabase": {
       "type": "http",
