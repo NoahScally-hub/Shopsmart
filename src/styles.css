@@ -388,6 +388,93 @@ td.best-price {
   color: var(--text);
 }
 
+/* ---------- charts ---------- */
+
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.chart-bar {
+  fill: var(--accent);
+}
+
+.chart-bar:hover {
+  opacity: 0.85;
+}
+
+/* Axes stay recessive: a hairline, never competing with the data. */
+.chart-axis {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+/* Values and labels wear ink tokens, not the series color. */
+.chart-value {
+  fill: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-label {
+  fill: var(--muted);
+  font-size: 11px;
+}
+
+.hbar-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.hbar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+.hbar-fill.sale {
+  background: var(--sale);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.stat {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
 /* ---------- settings ---------- */
 
 .swatches {

@@ -5,6 +5,7 @@
     "prices": "Precios",
     "plan": "Plan",
     "alerts": "Alertas",
+    "insights": "Análisis",
     "settings": "Ajustes"
   },
   "common": {
@@ -79,6 +80,30 @@
     "empty": "Ningún artículo de tus listas está en oferta. Marca un precio como «En oferta» en la pestaña Precios.",
     "saleAt": "en oferta en {{store}}"
   },
+  "insights": {
+    "title": "Análisis",
+    "empty": "Aún no has registrado ninguna compra.",
+    "emptyHint": "Abre la pestaña Plan y toca «Compré aquí» después de una compra: las tendencias se irán construyendo a partir de ahí.",
+    "totalSpent": "Total gastado",
+    "trips": "Compras",
+    "avgTrip": "Media por compra",
+    "monthlyTitle": "Gasto por mes",
+    "storesTitle": "Dónde compras",
+    "unknownStore": "Tienda eliminada",
+    "tripsCount_one": "{{count}} compra",
+    "tripsCount_other": "{{count}} compras",
+    "tripsCount_many": "{{count}} compras",
+    "saleTitle": "Ofertas registradas",
+    "saleSummary": "{{onSale}} de {{total}} precios registrados están en oferta",
+    "noPrices": "Aún no hay precios registrados: añade algunos en la pestaña Precios.",
+    "historyTitle": "Historial de precios",
+    "historySignIn": "Inicia sesión en Ajustes para crear un historial de precios en todos tus dispositivos.",
+    "historyEmpty": "Todavía no hay suficiente historial. Un precio debe registrarse más de una vez para mostrar una tendencia.",
+    "loading": "Cargando…",
+    "colLowest": "Más bajo",
+    "colLatest": "Último",
+    "colHighest": "Más alto"
+  },
   "cloud": {
     "title": "Sincronización",
     "description": "Inicia sesión para guardar tus listas y precios y usarlos en otro dispositivo. Tus datos siguen siendo privados.",
@@ -111,6 +136,7 @@
     "fPrices": "Comparación de precios",
     "fPlan": "Plan de compra",
     "fAlerts": "Alertas de ofertas",
+    "fInsights": "Análisis",
     "fVoice": "Dictado por voz",
     "fRecipes": "Sugerencias de recetas (próximamente)",
     "gasPrice": "Precio de la gasolina por litro",

@@ -35,6 +35,7 @@ ShopSmart is a **Progressive Web App** built with React + TypeScript + Vite:
 | Voice dictation for adding items | ✅ |
 | Themes (light/dark/system + 4 accent colors) | ✅ |
 | Feature toggles — hidden features remove their tab entirely | ✅ |
+| Insights: monthly spend, store ranking, sale share, price history | ✅ |
 | Backup: export all data as JSON | ✅ |
 | Supabase account + cloud sync across devices | ✅ |
 | Scraped store prices via Playwright MCP | 🔜 |

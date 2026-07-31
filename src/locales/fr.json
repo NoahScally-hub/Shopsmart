@@ -5,6 +5,7 @@
     "prices": "Prix",
     "plan": "Plan",
     "alerts": "Alertes",
+    "insights": "Analyses",
     "settings": "Réglages"
   },
   "common": {
@@ -79,6 +80,30 @@
     "empty": "Aucun article de vos listes n'est en promo. Cochez « En promo » dans l'onglet Prix.",
     "saleAt": "en promo chez {{store}}"
   },
+  "insights": {
+    "title": "Analyses",
+    "empty": "Aucune sortie de courses enregistrée pour l'instant.",
+    "emptyHint": "Ouvrez l'onglet Plan et touchez « J'ai fait mes courses ici » après une sortie : les tendances se construiront à partir de là.",
+    "totalSpent": "Total dépensé",
+    "trips": "Sorties",
+    "avgTrip": "Moyenne par sortie",
+    "monthlyTitle": "Dépenses par mois",
+    "storesTitle": "Où vous magasinez",
+    "unknownStore": "Magasin supprimé",
+    "tripsCount_one": "{{count}} sortie",
+    "tripsCount_other": "{{count}} sorties",
+    "tripsCount_many": "{{count}} sorties",
+    "saleTitle": "Promotions suivies",
+    "saleSummary": "{{onSale}} des {{total}} prix suivis sont en promo",
+    "noPrices": "Aucun prix enregistré — ajoutez-en dans l'onglet Prix.",
+    "historyTitle": "Historique des prix",
+    "historySignIn": "Connectez-vous dans les Réglages pour constituer un historique des prix sur tous vos appareils.",
+    "historyEmpty": "Pas encore assez d'historique. Un prix doit être relevé plus d'une fois pour révéler une tendance.",
+    "loading": "Chargement…",
+    "colLowest": "Le plus bas",
+    "colLatest": "Dernier",
+    "colHighest": "Le plus haut"
+  },
   "cloud": {
     "title": "Synchronisation",
     "description": "Connectez-vous pour sauvegarder vos listes et vos prix et les retrouver sur un autre appareil. Vos données restent privées.",
@@ -111,6 +136,7 @@
     "fPrices": "Comparaison des prix",
     "fPlan": "Plan de courses",
     "fAlerts": "Alertes promo",
+    "fInsights": "Analyses",
     "fVoice": "Dictée vocale",
     "fRecipes": "Suggestions de recettes (bientôt)",
     "gasPrice": "Prix du carburant au litre",

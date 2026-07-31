@@ -56,6 +56,7 @@ export default function SettingsView() {
     { key: "prices", label: t("settings.fPrices") },
     { key: "plan", label: t("settings.fPlan") },
     { key: "alerts", label: t("settings.fAlerts") },
+    { key: "insights", label: t("settings.fInsights") },
     { key: "voice", label: t("settings.fVoice") },
     { key: "recipes", label: t("settings.fRecipes") }
   ];

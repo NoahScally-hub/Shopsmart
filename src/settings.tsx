@@ -15,6 +15,7 @@ export interface FeatureToggles {
   prices: boolean;
   plan: boolean;
   alerts: boolean;
+  insights: boolean;
   voice: boolean;
   recipes: boolean;
 }
@@ -35,7 +36,14 @@ export const DEFAULTS: Settings = {
     : "en") as Language,
   theme: "system",
   accent: "green",
-  features: { prices: true, plan: true, alerts: true, voice: true, recipes: false },
+  features: {
+    prices: true,
+    plan: true,
+    alerts: true,
+    insights: true,
+    voice: true,
+    recipes: false
+  },
   gasPricePerL: 1.6,
   fuelLper100km: 8,
   currency: "$"

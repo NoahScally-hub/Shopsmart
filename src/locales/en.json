@@ -5,6 +5,7 @@
     "prices": "Prices",
     "plan": "Plan",
     "alerts": "Alerts",
+    "insights": "Insights",
     "settings": "Settings"
   },
   "common": {
@@ -76,6 +77,29 @@
     "empty": "No items on your lists are on sale right now. Mark a price as \"on sale\" in the Prices tab.",
     "saleAt": "on sale at {{store}}"
   },
+  "insights": {
+    "title": "Insights",
+    "empty": "No shopping trips recorded yet.",
+    "emptyHint": "Open the Plan tab and tap \"I shopped here\" after a trip — spending trends will build up from there.",
+    "totalSpent": "Total spent",
+    "trips": "Trips",
+    "avgTrip": "Average trip",
+    "monthlyTitle": "Spending by month",
+    "storesTitle": "Where you shop",
+    "unknownStore": "Deleted store",
+    "tripsCount_one": "{{count}} trip",
+    "tripsCount_other": "{{count}} trips",
+    "saleTitle": "Sales tracked",
+    "saleSummary": "{{onSale}} of {{total}} tracked prices are on sale",
+    "noPrices": "No prices recorded yet — add some in the Prices tab.",
+    "historyTitle": "Price history",
+    "historySignIn": "Sign in under Settings to build price history across your devices.",
+    "historyEmpty": "Not enough history yet. Prices need to be seen more than once before trends appear.",
+    "loading": "Loading…",
+    "colLowest": "Lowest",
+    "colLatest": "Latest",
+    "colHighest": "Highest"
+  },
   "cloud": {
     "title": "Cloud sync",
     "description": "Sign in to back up your lists and prices and use them on another device. Your data stays private to your account.",
@@ -107,6 +131,7 @@
     "fPrices": "Price comparison",
     "fPlan": "Shopping plan",
     "fAlerts": "Sale alerts",
+    "fInsights": "Insights",
     "fVoice": "Voice dictation",
     "fRecipes": "Recipe suggestions (coming soon)",
     "gasPrice": "Gas price per liter",

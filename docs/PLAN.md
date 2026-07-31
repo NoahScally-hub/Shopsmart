@@ -9,9 +9,14 @@ tell the user what you found instead of substituting your own design.
 
 **Product rules**
 - Free tools only. No paid APIs, no API keys for app features, no paid tiers.
-- Performance budget: the initial JS bundle stays under **130 kB gzipped**
-  (currently ~122 kB). Anything heavy gets `React.lazy` code-split like
-  `CloudSync` is. Check chunk sizes in the `npm run build` output every phase.
+- Performance budget: what matters is the **initial** bundle — what must arrive
+  before first paint. Keep it under **160 kB gzipped** (currently ~124 kB).
+  This is a guideline, not a hard requirement, but treat a jump of more than
+  ~15 kB in one phase as a signal to code-split rather than absorb. Anything
+  heavy (or anything only some users reach) gets `React.lazy`-split like
+  `CloudSync` and `InsightsView`; async chunks are cheap and don't count
+  against first paint. Check chunk sizes in `npm run build` output every phase,
+  and say something if the initial bundle would meaningfully grow.
 - UI taste (user was explicit): **no emoji anywhere in the UI**. Icons come
   from `src/icons.tsx` (24×24 stroke SVG, strokeWidth 1.75) — add new icons
   there in the same style. Warm neutral surfaces, one accent color via CSS

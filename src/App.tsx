@@ -1,22 +1,34 @@
-import { useState, type ReactNode } from "react";
+import { lazy, Suspense, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
 import db, { normalizeItemName } from "./db";
 import { useSettings } from "./settings";
-import { IconList, IconTag, IconRoute, IconBell, IconSliders } from "./icons";
+import {
+  IconList,
+  IconTag,
+  IconRoute,
+  IconBell,
+  IconTrend,
+  IconSliders
+} from "./icons";
 import ListsView from "./views/ListsView";
 import PricesView from "./views/PricesView";
 import PlanView from "./views/PlanView";
 import AlertsView from "./views/AlertsView";
 import SettingsView from "./views/SettingsView";
 
-type Tab = "lists" | "prices" | "plan" | "alerts" | "settings";
+// Insights reads price history from Supabase; lazy so supabase-js stays out
+// of the initial bundle (same reason as CloudSync).
+const InsightsView = lazy(() => import("./views/InsightsView"));
+
+type Tab = "lists" | "prices" | "plan" | "alerts" | "insights" | "settings";
 
 const ICONS: Record<Tab, ReactNode> = {
   lists: <IconList />,
   prices: <IconTag />,
   plan: <IconRoute />,
   alerts: <IconBell />,
+  insights: <IconTrend />,
   settings: <IconSliders />
 };
 
@@ -46,6 +58,7 @@ export default function App() {
     { id: "prices", visible: settings.features.prices },
     { id: "plan", visible: settings.features.plan },
     { id: "alerts", visible: settings.features.alerts, badge: saleCount },
+    { id: "insights", visible: settings.features.insights },
     { id: "settings", visible: true }
   ];
   const visibleTabs = tabs.filter((x) => x.visible);
@@ -64,6 +77,11 @@ export default function App() {
         {active === "prices" && <PricesView />}
         {active === "plan" && <PlanView />}
         {active === "alerts" && <AlertsView />}
+        {active === "insights" && (
+          <Suspense fallback={null}>
+            <InsightsView />
+          </Suspense>
+        )}
         {active === "settings" && <SettingsView />}
       </main>
       <nav className="tabbar">

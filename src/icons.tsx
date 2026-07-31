@@ -95,6 +95,14 @@ export const IconUpload = ({ size }: { size?: number }) => (
   </I>
 );
 
+export const IconTrend = ({ size }: { size?: number }) => (
+  <I size={size}>
+    <path d="M3.5 20.5h17" />
+    <path d="M6 17l4.5-5 3.5 3 5-7" />
+    <path d="M15.5 8.5H19v3.5" />
+  </I>
+);
+
 export const IconSync = ({ size }: { size?: number }) => (
   <I size={size}>
     <path d="M20 11a8 8 0 0 0-13.7-5.3L4 8" />
