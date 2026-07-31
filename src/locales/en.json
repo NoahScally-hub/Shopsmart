@@ -83,6 +83,8 @@
     "syncNow": "Sync now",
     "syncing": "Syncing…",
     "syncDone": "Synced — {{pushed}} sent, {{pulled}} received.",
+    "pending_one": "{{count}} change to sync",
+    "pending_other": "{{count}} changes to sync",
     "lastSync": "Last synced {{when}}",
     "never": "Not synced yet on this device.",
     "checkEmail": "Check your email to confirm the account, then sign in."

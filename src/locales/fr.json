@@ -85,6 +85,9 @@
     "syncNow": "Synchroniser",
     "syncing": "Synchronisation…",
     "syncDone": "Synchronisé — {{pushed}} envoyés, {{pulled}} reçus.",
+    "pending_one": "{{count}} modification à synchroniser",
+    "pending_other": "{{count}} modifications à synchroniser",
+    "pending_many": "{{count}} modifications à synchroniser",
     "lastSync": "Dernière synchro : {{when}}",
     "never": "Pas encore synchronisé sur cet appareil.",
     "checkEmail": "Vérifiez votre courriel pour confirmer le compte, puis connectez-vous."

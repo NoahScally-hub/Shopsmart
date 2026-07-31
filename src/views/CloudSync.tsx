@@ -1,11 +1,16 @@
-import { useState, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
+import { useLiveQuery } from "dexie-react-hooks";
 import { supabase, isCloudConfigured, useSession } from "../supabase";
-import { syncNow, getLastSync } from "../sync";
+import { syncNow, getLastSync, countPendingChanges } from "../sync";
 import { useSettings } from "../settings";
 import { IconSync } from "../icons";
 
 type Status = { kind: "idle" | "busy" | "ok" | "error"; message?: string };
+
+// Module-level so React StrictMode's double-mount (and re-opening Settings)
+// can't fire a second automatic sync in the same page load.
+let autoSyncStarted = false;
 
 export default function CloudSync() {
   const { t, i18n } = useTranslation();
@@ -15,6 +20,36 @@ export default function CloudSync() {
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [lastSync, setLastSync] = useState<number | null>(getLastSync);
+  const pending = useLiveQuery(countPendingChanges, [], 0);
+
+  // Read settings at call time so runSync stays stable across setting changes.
+  const settingsRef = useRef(settings);
+  settingsRef.current = settings;
+
+  const runSync = useCallback(async () => {
+    setStatus({ kind: "busy", message: t("cloud.syncing") });
+    try {
+      const r = await syncNow(settingsRef.current);
+      setLastSync(getLastSync());
+      setStatus({
+        kind: "ok",
+        message: t("cloud.syncDone", { pushed: r.pushed, pulled: r.pulled })
+      });
+    } catch (e) {
+      setStatus({
+        kind: "error",
+        message: e instanceof Error ? e.message : String(e)
+      });
+    }
+  }, [t]);
+
+  // Sync once per page load when already signed in and actually online.
+  useEffect(() => {
+    if (!isCloudConfigured || !session || autoSyncStarted) return;
+    if (!navigator.onLine) return;
+    autoSyncStarted = true;
+    void runSync();
+  }, [session, runSync]);
 
   if (!isCloudConfigured)
     return (
@@ -46,28 +81,10 @@ export default function CloudSync() {
     setStatus({ kind: "idle" });
   };
 
-  const runSync = async () => {
-    setStatus({ kind: "busy", message: t("cloud.syncing") });
-    try {
-      const r = await syncNow(settings);
-      setLastSync(getLastSync());
-      setStatus({
-        kind: "ok",
-        message: t("cloud.syncDone", {
-          pushed: r.pushed,
-          pulled: r.pulled
-        })
-      });
-    } catch (e) {
-      setStatus({
-        kind: "error",
-        message: e instanceof Error ? e.message : String(e)
-      });
-    }
-  };
-
   const signOut = async () => {
     await supabase!.auth.signOut();
+    // Let the next signed-in load sync again.
+    autoSyncStarted = false;
     setStatus({ kind: "idle" });
   };
 
@@ -130,6 +147,9 @@ export default function CloudSync() {
             <button className="primary" onClick={runSync} disabled={busy}>
               <IconSync size={15} /> {t("cloud.syncNow")}
             </button>
+            {pending > 0 && (
+              <span className="pill">{t("cloud.pending", { count: pending })}</span>
+            )}
             <button onClick={signOut} disabled={busy}>
               {t("cloud.signOut")}
             </button>

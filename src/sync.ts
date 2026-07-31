@@ -16,6 +16,32 @@ export const getLastSync = (): number | null => {
   return raw ? Number(raw) : null;
 };
 
+/** Rows that have never reached the cloud, plus deletions not yet pushed.
+ *  Rows without a remoteId can't be found via the index (IndexedDB skips
+ *  undefined keys), so these are small full scans — fine at list sizes. */
+export async function countPendingChanges(): Promise<number> {
+  const missingRemote = (rows: Array<{ remoteId?: number }>) =>
+    rows.filter((r) => r.remoteId == null).length;
+
+  const [lists, items, stores, prices, trips, tombstones] = await Promise.all([
+    db.lists.toArray(),
+    db.items.toArray(),
+    db.stores.toArray(),
+    db.prices.toArray(),
+    db.trips.toArray(),
+    db.tombstones.count()
+  ]);
+
+  return (
+    missingRemote(lists) +
+    missingRemote(items) +
+    missingRemote(stores) +
+    missingRemote(prices) +
+    missingRemote(trips) +
+    tombstones
+  );
+}
+
 /** Run `fn` over `items` with bounded concurrency so a large sync doesn't fire
  *  hundreds of simultaneous requests. */
 async function mapLimit<T>(
