@@ -40,6 +40,13 @@ ShopSmart is a **Progressive Web App** built with React + TypeScript + Vite:
 | Scraped store prices via Playwright MCP | 🔜 |
 | Recipe suggestions | 🔜 (toggle already in Settings, off by default) |
 
+## Roadmap
+
+The remaining phases (tests, auto-sync + PWA polish, price scraping pipeline,
+insights, recipes, distances, deploy) are specified in detail in
+[docs/PLAN.md](docs/PLAN.md) — written to be executed phase-by-phase in future
+sessions, including the project's invariants and guardrails.
+
 ## Development
 
 ```bash
