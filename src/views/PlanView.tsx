@@ -1,18 +1,14 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
-import db, { normalizeItemName } from "../db";
+import db from "../db";
 import { useSettings } from "../settings";
-import type { Store } from "../types";
-
-interface StorePlan {
-  store: Store;
-  covered: number;
-  missing: number;
-  itemsCost: number;
-  travelCost: number;
-  total: number;
-}
+import {
+  buildPriceMap,
+  computeMultiStop,
+  computeStorePlans,
+  type StorePlan
+} from "../plan";
 
 export default function PlanView() {
   const { t } = useTranslation();
@@ -42,69 +38,12 @@ export default function PlanView() {
 
   if (!lists || !items || !stores || !prices) return null;
 
-  const priceMap = new Map<string, number>();
-  for (const p of prices) priceMap.set(`${p.itemName}|${p.storeId}`, p.price);
-
-  const travelCostOf = (s: Store) =>
-    ((s.distanceKm * 2) / 100) * settings.fuelLper100km * settings.gasPricePerL;
-
+  const priceMap = buildPriceMap(prices);
   const included = stores.filter((s) => !excluded.has(s.id!));
 
-  const plans: StorePlan[] = included
-    .map((store) => {
-      let covered = 0;
-      let itemsCost = 0;
-      for (const it of items) {
-        const p = priceMap.get(`${normalizeItemName(it.name)}|${store.id}`);
-        if (p != null) {
-          covered++;
-          itemsCost += p * it.qty;
-        }
-      }
-      const travelCost = travelCostOf(store);
-      return {
-        store,
-        covered,
-        missing: items.length - covered,
-        itemsCost,
-        travelCost,
-        total: itemsCost + travelCost
-      };
-    })
-    .filter((p) => p.covered > 0)
-    .sort((a, b) => a.missing - b.missing || a.total - b.total);
-
+  const plans = computeStorePlans(items, included, priceMap, settings);
   const best = plans[0];
-
-  // Multi-stop: cheapest store per item; pay travel for every store visited.
-  let multi: { stops: Store[]; itemsCost: number; travelCost: number; total: number; covered: number } | null =
-    null;
-  if (included.length > 1 && items.length > 0) {
-    const stopIds = new Set<number>();
-    let itemsCost = 0;
-    let covered = 0;
-    for (const it of items) {
-      let bestPrice: number | null = null;
-      let bestStore: number | null = null;
-      for (const s of included) {
-        const p = priceMap.get(`${normalizeItemName(it.name)}|${s.id}`);
-        if (p != null && (bestPrice == null || p < bestPrice)) {
-          bestPrice = p;
-          bestStore = s.id!;
-        }
-      }
-      if (bestPrice != null && bestStore != null) {
-        covered++;
-        itemsCost += bestPrice * it.qty;
-        stopIds.add(bestStore);
-      }
-    }
-    if (stopIds.size > 1) {
-      const stops = included.filter((s) => stopIds.has(s.id!));
-      const travelCost = stops.reduce((sum, s) => sum + travelCostOf(s), 0);
-      multi = { stops, itemsCost, travelCost, total: itemsCost + travelCost, covered };
-    }
-  }
+  const multi = computeMultiStop(items, included, priceMap, settings);
 
   const toggleExclude = (id: number) => {
     setExcluded((prev) => {
