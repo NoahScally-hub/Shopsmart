@@ -1,5 +1,14 @@
 import type { ListItem } from "./types";
 
+/** A price row as it appears in a CSV: the store is named, not an id, so the
+ *  file stays portable between devices and readable by hand. */
+export interface PriceCsvRow {
+  itemName: string;
+  storeName: string;
+  price: number;
+  onSale: 0 | 1;
+}
+
 function esc(v: string | number): string {
   const s = String(v);
   return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
@@ -59,6 +68,38 @@ export function parseCsv(text: string): string[][] {
     rows.push(row);
   }
   return rows;
+}
+
+export function pricesToCsv(rows: PriceCsvRow[]): string {
+  const header = "item,store,price,on_sale";
+  const body = rows.map((r) =>
+    [esc(r.itemName), esc(r.storeName), r.price.toFixed(2), r.onSale ? 1 : 0].join(",")
+  );
+  return [header, ...body].join("\r\n");
+}
+
+export function csvToPrices(text: string): PriceCsvRow[] {
+  const rows = parseCsv(text.replace(/^﻿/, "").trim());
+  if (!rows.length) return [];
+  const start = rows[0][0]?.trim().toLowerCase() === "item" ? 1 : 0;
+  const out: PriceCsvRow[] = [];
+  for (let r = start; r < rows.length; r++) {
+    const [item, store, price, onSale] = rows[r];
+    const itemName = item?.trim().toLowerCase() ?? "";
+    const storeName = store?.trim() ?? "";
+    const value = Number(price);
+    // A price row is meaningless without all three, and a non-positive price
+    // would corrupt plan totals — skip rather than guess.
+    if (!itemName || !storeName || !Number.isFinite(value) || value <= 0) continue;
+    const sale = onSale?.trim().toLowerCase();
+    out.push({
+      itemName,
+      storeName,
+      price: value,
+      onSale: sale === "1" || sale === "true" || sale === "yes" ? 1 : 0
+    });
+  }
+  return out;
 }
 
 export function csvToItems(

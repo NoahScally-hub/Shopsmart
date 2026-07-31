@@ -46,6 +46,13 @@
     "pricesTitle": "Enregistrer un prix",
     "itemPlaceholder": "Article (ex. lait)",
     "onSale": "En promo",
+    "bulkTitle": "Prix en lot",
+    "exportCsv": "Exporter les prix",
+    "importCsv": "Importer des prix",
+    "csvFormat": "Colonnes CSV : item, store, price, on_sale. Les magasins inconnus sont créés automatiquement (indiquez leur distance ensuite).",
+    "imported_one": "{{count}} prix importé",
+    "imported_other": "{{count}} prix importés",
+    "imported_many": "{{count}} prix importés",
     "compareTitle": "Comparaison des prix",
     "noPrices": "Notez les prix vus en magasin ou en catalogue pour les comparer ici.",
     "sale": "PROMO"

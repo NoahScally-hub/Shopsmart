@@ -46,6 +46,13 @@
     "pricesTitle": "Registrar un precio",
     "itemPlaceholder": "Artículo (ej. leche)",
     "onSale": "En oferta",
+    "bulkTitle": "Precios en lote",
+    "exportCsv": "Exportar precios",
+    "importCsv": "Importar precios",
+    "csvFormat": "Columnas CSV: item, store, price, on_sale. Las tiendas desconocidas se crean automáticamente (indica su distancia después).",
+    "imported_one": "{{count}} precio importado",
+    "imported_other": "{{count}} precios importados",
+    "imported_many": "{{count}} precios importados",
     "compareTitle": "Comparación de precios",
     "noPrices": "Apunta los precios que veas en tienda o en folletos para compararlos aquí.",
     "sale": "OFERTA"

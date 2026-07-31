@@ -45,6 +45,12 @@
     "pricesTitle": "Record a price",
     "itemPlaceholder": "Item (e.g. milk)",
     "onSale": "On sale",
+    "bulkTitle": "Bulk prices",
+    "exportCsv": "Export prices",
+    "importCsv": "Import prices",
+    "csvFormat": "CSV columns: item, store, price, on_sale. Unknown stores are created automatically (set their distance afterwards).",
+    "imported_one": "{{count}} price imported",
+    "imported_other": "{{count}} prices imported",
     "compareTitle": "Price comparison",
     "noPrices": "Record prices you see in store or in flyers to compare them here.",
     "sale": "SALE"

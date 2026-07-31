@@ -1,9 +1,10 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
 import db, { normalizeItemName, recordTombstone } from "../db";
 import { useSettings } from "../settings";
-import { IconTrash, IconX } from "../icons";
+import { IconDownload, IconTrash, IconUpload, IconX } from "../icons";
+import { csvToPrices, downloadFile, pricesToCsv } from "../csv";
 
 export default function PricesView() {
   const { t } = useTranslation();
@@ -18,6 +19,8 @@ export default function PricesView() {
   const [storeId, setStoreId] = useState("");
   const [price, setPrice] = useState("");
   const [onSale, setOnSale] = useState(false);
+  const [importMsg, setImportMsg] = useState("");
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const addStore = async (e: FormEvent) => {
     e.preventDefault();
@@ -68,6 +71,66 @@ export default function PricesView() {
       await recordTombstone("prices", (await db.prices.get(id))?.remoteId);
       await db.prices.delete(id);
     });
+  };
+
+  const exportPrices = () => {
+    const storeById = new Map((stores ?? []).map((s) => [s.id!, s.name]));
+    const rows = (prices ?? [])
+      .map((p) => ({
+        itemName: p.itemName,
+        storeName: storeById.get(p.storeId) ?? "",
+        price: p.price,
+        onSale: p.onSale
+      }))
+      .filter((r) => r.storeName)
+      .sort(
+        (a, b) =>
+          a.itemName.localeCompare(b.itemName) ||
+          a.storeName.localeCompare(b.storeName)
+      );
+    downloadFile("shopsmart-prices.csv", pricesToCsv(rows));
+  };
+
+  const importPrices = async (file: File | undefined) => {
+    if (!file) return;
+    const rows = csvToPrices(await file.text());
+    let imported = 0;
+    if (rows.length) {
+      await db.transaction("rw", db.stores, db.prices, async () => {
+        // Match stores case-insensitively so "Walmart" and "walmart" in a
+        // hand-edited file don't create a duplicate store.
+        const byName = new Map(
+          (await db.stores.toArray()).map((s) => [s.name.toLowerCase(), s.id!])
+        );
+        for (const row of rows) {
+          let sid = byName.get(row.storeName.toLowerCase());
+          if (sid == null) {
+            sid = (await db.stores.add({
+              name: row.storeName,
+              distanceKm: 0
+            })) as number;
+            byName.set(row.storeName.toLowerCase(), sid);
+          }
+          const existing = await db.prices
+            .where("[itemName+storeId]")
+            .equals([row.itemName, sid])
+            .first();
+          const entry = {
+            itemName: row.itemName,
+            storeId: sid,
+            price: row.price,
+            onSale: row.onSale,
+            updatedAt: Date.now()
+          };
+          if (existing) await db.prices.update(existing.id!, entry);
+          else await db.prices.add(entry);
+          imported++;
+        }
+      });
+    }
+    setImportMsg(t("prices.imported", { count: imported }));
+    setTimeout(() => setImportMsg(""), 4000);
+    if (fileRef.current) fileRef.current.value = "";
   };
 
   const itemSuggestions = [
@@ -168,6 +231,25 @@ export default function PricesView() {
               {t("common.save")}
             </button>
           </form>
+
+          <h3>{t("prices.bulkTitle")}</h3>
+          <div className="row">
+            <button onClick={exportPrices} disabled={(prices?.length ?? 0) === 0}>
+              <IconDownload size={15} /> {t("prices.exportCsv")}
+            </button>
+            <button onClick={() => fileRef.current?.click()}>
+              <IconUpload size={15} /> {t("prices.importCsv")}
+            </button>
+            <input
+              ref={fileRef}
+              type="file"
+              accept=".csv,text/csv"
+              style={{ display: "none" }}
+              onChange={(e) => importPrices(e.target.files?.[0])}
+            />
+            {importMsg && <span className="pill">{importMsg}</span>}
+          </div>
+          <p className="muted">{t("prices.csvFormat")}</p>
 
           {priceNames.length > 0 && (
             <>
