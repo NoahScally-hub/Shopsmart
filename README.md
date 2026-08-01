@@ -1,5 +1,8 @@
 # 🛒 ShopSmart
 
+**Live app: https://noahscally-hub.github.io/Shopsmart/** — open it on your
+phone and use *Add to Home Screen* to install it.
+
 Smart shopping lists with price comparison, cost-optimized trip planning, sale
 alerts, voice dictation and full en/fr/es localization — as one codebase that
 runs on the web **and** installs on your phone.
