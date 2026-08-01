@@ -41,11 +41,18 @@ This document is the procedure for that session to follow.
 
 ### Tools
 
-Either browser automation stack works; use whichever is connected.
+Any of these work; use whichever is connected. The rules above apply
+identically whichever you pick — a managed scraping API does not remove the
+obligation to check robots.txt first.
 
-- **Playwright MCP** (`mcp__playwright__*`), when the server is connected:
-  `browser_navigate` to load a page, `browser_snapshot` for an accessibility
-  tree, `browser_find` / `browser_evaluate` to pull out specific values.
+- **Firecrawl MCP** (`mcp__firecrawl__*`), best first choice when available:
+  returns clean markdown and handles JS-rendered pages, so it is usually one
+  call instead of a click-through. Free tier is **1,000 credits/month**, and
+  roughly one page costs one credit — so it is finite. Don't burn it on pages
+  the other tools can read just as well, and fall back when it runs out.
+- **Playwright MCP** (`mcp__playwright__*`): a real local browser, unlimited
+  and key-free. `browser_navigate` to load a page, `browser_snapshot` for an
+  accessibility tree, `browser_evaluate` to pull out specific values.
 - **Built-in Browser pane** (`mcp__Claude_Browser__*`), always available:
   `preview_start` with a `url` to open a tab, then `navigate`,
   `get_page_text` (best for reading prices) and `read_page`.
