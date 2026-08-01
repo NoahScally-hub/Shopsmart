@@ -6,6 +6,7 @@
     "plan": "Plan",
     "alerts": "Alertas",
     "insights": "Análisis",
+    "recipes": "Recetas",
     "settings": "Ajustes"
   },
   "common": {
@@ -80,6 +81,24 @@
     "empty": "Ningún artículo de tus listas está en oferta. Marca un precio como «En oferta» en la pestaña Precios.",
     "saleAt": "en oferta en {{store}}"
   },
+  "recipes": {
+    "title": "Ideas de recetas",
+    "noList": "Crea primero una lista: las recetas se sugieren a partir de lo que haya en ella.",
+    "basedOn": "Ordenadas según lo que ya tienes en «{{list}}».",
+    "usesCount_one": "usa {{count}} artículo que tienes",
+    "usesCount_other": "usa {{count}} artículos que tienes",
+    "usesCount_many": "usa {{count}} artículos que tienes",
+    "showSteps": "Pasos",
+    "hideSteps": "Ocultar pasos",
+    "addMissing_one": "Añadir {{count}} artículo que falta",
+    "addMissing_other": "Añadir {{count}} artículos que faltan",
+    "addMissing_many": "Añadir {{count}} artículos que faltan",
+    "nothingMissing": "Lo tienes todo.",
+    "added_one": "{{count}} artículo añadido a {{list}}",
+    "added_other": "{{count}} artículos añadidos a {{list}}",
+    "added_many": "{{count}} artículos añadidos a {{list}}",
+    "showMore": "Mostrar {{count}} recetas más"
+  },
   "insights": {
     "title": "Análisis",
     "empty": "Aún no has registrado ninguna compra.",
@@ -138,7 +157,7 @@
     "fAlerts": "Alertas de ofertas",
     "fInsights": "Análisis",
     "fVoice": "Dictado por voz",
-    "fRecipes": "Sugerencias de recetas (próximamente)",
+    "fRecipes": "Sugerencias de recetas",
     "gasPrice": "Precio de la gasolina por litro",
     "fuelUse": "Consumo del coche (L/100 km)",
     "currency": "Símbolo de moneda",

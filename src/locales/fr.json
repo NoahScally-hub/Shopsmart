@@ -6,6 +6,7 @@
     "plan": "Plan",
     "alerts": "Alertes",
     "insights": "Analyses",
+    "recipes": "Recettes",
     "settings": "Réglages"
   },
   "common": {
@@ -80,6 +81,24 @@
     "empty": "Aucun article de vos listes n'est en promo. Cochez « En promo » dans l'onglet Prix.",
     "saleAt": "en promo chez {{store}}"
   },
+  "recipes": {
+    "title": "Idées de recettes",
+    "noList": "Créez d'abord une liste — les recettes sont proposées à partir de son contenu.",
+    "basedOn": "Classées selon ce qui figure déjà sur « {{list}} ».",
+    "usesCount_one": "utilise {{count}} article que vous avez",
+    "usesCount_other": "utilise {{count}} articles que vous avez",
+    "usesCount_many": "utilise {{count}} articles que vous avez",
+    "showSteps": "Étapes",
+    "hideSteps": "Masquer les étapes",
+    "addMissing_one": "Ajouter {{count}} article manquant",
+    "addMissing_other": "Ajouter {{count}} articles manquants",
+    "addMissing_many": "Ajouter {{count}} articles manquants",
+    "nothingMissing": "Vous avez tout.",
+    "added_one": "{{count}} article ajouté à {{list}}",
+    "added_other": "{{count}} articles ajoutés à {{list}}",
+    "added_many": "{{count}} articles ajoutés à {{list}}",
+    "showMore": "Afficher {{count}} recettes de plus"
+  },
   "insights": {
     "title": "Analyses",
     "empty": "Aucune sortie de courses enregistrée pour l'instant.",
@@ -138,7 +157,7 @@
     "fAlerts": "Alertes promo",
     "fInsights": "Analyses",
     "fVoice": "Dictée vocale",
-    "fRecipes": "Suggestions de recettes (bientôt)",
+    "fRecipes": "Suggestions de recettes",
     "gasPrice": "Prix du carburant au litre",
     "fuelUse": "Consommation (L/100 km)",
     "currency": "Symbole monétaire",

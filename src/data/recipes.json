@@ -1,0 +1,242 @@
+[
+  {
+    "id": "scrambled-eggs",
+    "names": { "en": "Scrambled eggs on toast", "fr": "Œufs brouillés sur pain grillé", "es": "Huevos revueltos con tostada" },
+    "ingredients": ["eggs", "butter", "bread"],
+    "steps": {
+      "en": ["Beat the eggs with a pinch of salt.", "Melt butter in a pan over low heat.", "Pour in the eggs and stir slowly until just set.", "Serve on toasted bread."],
+      "fr": ["Battez les œufs avec une pincée de sel.", "Faites fondre le beurre à feu doux.", "Versez les œufs et remuez doucement jusqu'à ce qu'ils prennent.", "Servez sur du pain grillé."],
+      "es": ["Bate los huevos con una pizca de sal.", "Derrite la mantequilla a fuego lento.", "Añade los huevos y remueve despacio hasta que cuajen.", "Sirve sobre pan tostado."]
+    }
+  },
+  {
+    "id": "grilled-cheese",
+    "names": { "en": "Grilled cheese sandwich", "fr": "Sandwich au fromage grillé", "es": "Sándwich de queso a la plancha" },
+    "ingredients": ["bread", "cheese", "butter"],
+    "steps": {
+      "en": ["Butter the outside of two slices of bread.", "Put the cheese between them, buttered sides out.", "Cook in a pan over medium heat until golden, about 3 minutes a side."],
+      "fr": ["Beurrez l'extérieur de deux tranches de pain.", "Placez le fromage entre les deux, côtés beurrés vers l'extérieur.", "Faites dorer à feu moyen, environ 3 minutes par face."],
+      "es": ["Unta mantequilla en la cara exterior de dos rebanadas.", "Pon el queso entre ellas, con la mantequilla hacia fuera.", "Dora en la sartén a fuego medio, unos 3 minutos por lado."]
+    }
+  },
+  {
+    "id": "tomato-pasta",
+    "names": { "en": "Simple tomato pasta", "fr": "Pâtes à la tomate", "es": "Pasta con tomate" },
+    "ingredients": ["pasta", "tomatoes", "garlic", "olive oil"],
+    "steps": {
+      "en": ["Boil the pasta in salted water.", "Gently fry sliced garlic in olive oil.", "Add chopped tomatoes and simmer 10 minutes.", "Toss with the drained pasta."],
+      "fr": ["Faites cuire les pâtes dans l'eau salée.", "Faites revenir l'ail émincé dans l'huile d'olive.", "Ajoutez les tomates coupées et laissez mijoter 10 minutes.", "Mélangez avec les pâtes égouttées."],
+      "es": ["Cuece la pasta en agua con sal.", "Sofríe el ajo en láminas con aceite de oliva.", "Añade el tomate troceado y cuece 10 minutos.", "Mezcla con la pasta escurrida."]
+    }
+  },
+  {
+    "id": "fried-rice",
+    "names": { "en": "Egg fried rice", "fr": "Riz sauté aux œufs", "es": "Arroz frito con huevo" },
+    "ingredients": ["rice", "eggs", "soy sauce", "onion", "carrots"],
+    "steps": {
+      "en": ["Use cold cooked rice — fresh rice turns sticky.", "Fry the chopped onion and carrot until soft.", "Push aside, scramble the eggs in the same pan.", "Add the rice and soy sauce, stir over high heat 3 minutes."],
+      "fr": ["Utilisez du riz cuit et refroidi — le riz frais colle.", "Faites revenir l'oignon et la carotte hachés.", "Poussez-les sur le côté et brouillez les œufs dans la poêle.", "Ajoutez le riz et la sauce soja, remuez 3 minutes à feu vif."],
+      "es": ["Usa arroz cocido y frío: el recién hecho queda pegajoso.", "Sofríe la cebolla y la zanahoria picadas.", "Apártalas y cuaja los huevos en la misma sartén.", "Añade el arroz y la salsa de soja, saltea 3 minutos a fuego fuerte."]
+    }
+  },
+  {
+    "id": "chicken-stir-fry",
+    "names": { "en": "Chicken stir-fry", "fr": "Poulet sauté aux légumes", "es": "Salteado de pollo" },
+    "ingredients": ["chicken", "bell pepper", "soy sauce", "garlic", "rice"],
+    "steps": {
+      "en": ["Cut the chicken into strips and the pepper into slices.", "Sear the chicken over high heat until browned.", "Add pepper and garlic, cook 3 minutes more.", "Splash in soy sauce and serve over rice."],
+      "fr": ["Coupez le poulet en lanières et le poivron en tranches.", "Saisissez le poulet à feu vif jusqu'à coloration.", "Ajoutez le poivron et l'ail, poursuivez 3 minutes.", "Versez la sauce soja et servez sur du riz."],
+      "es": ["Corta el pollo en tiras y el pimiento en rodajas.", "Dora el pollo a fuego fuerte.", "Añade el pimiento y el ajo, cocina 3 minutos más.", "Echa la salsa de soja y sirve sobre arroz."]
+    }
+  },
+  {
+    "id": "lentil-soup",
+    "names": { "en": "Lentil soup", "fr": "Soupe de lentilles", "es": "Sopa de lentejas" },
+    "ingredients": ["lentils", "carrots", "onion", "celery", "broth"],
+    "steps": {
+      "en": ["Chop the onion, carrot and celery and soften in oil.", "Add rinsed lentils and broth.", "Simmer 25 minutes until the lentils are tender.", "Season well — lentils need more salt than you expect."],
+      "fr": ["Émincez l'oignon, la carotte et le céleri, faites-les suer.", "Ajoutez les lentilles rincées et le bouillon.", "Laissez mijoter 25 minutes jusqu'à tendreté.", "Salez généreusement — les lentilles en demandent beaucoup."],
+      "es": ["Pica la cebolla, la zanahoria y el apio y sofríelos.", "Añade las lentejas lavadas y el caldo.", "Cuece 25 minutos hasta que estén tiernas.", "Sazona bien: las lentejas piden más sal de lo que parece."]
+    }
+  },
+  {
+    "id": "omelette",
+    "names": { "en": "Cheese omelette", "fr": "Omelette au fromage", "es": "Tortilla de queso" },
+    "ingredients": ["eggs", "cheese", "butter"],
+    "steps": {
+      "en": ["Beat three eggs with salt and pepper.", "Melt butter in a non-stick pan over medium heat.", "Pour in the eggs, drawing the edges to the middle as they set.", "Add cheese, fold in half and slide onto a plate."],
+      "fr": ["Battez trois œufs avec sel et poivre.", "Faites fondre le beurre dans une poêle antiadhésive.", "Versez les œufs en ramenant les bords vers le centre.", "Ajoutez le fromage, pliez en deux et servez."],
+      "es": ["Bate tres huevos con sal y pimienta.", "Derrite mantequilla en una sartén antiadherente.", "Vierte los huevos llevando los bordes al centro.", "Añade el queso, dobla por la mitad y sirve."]
+    }
+  },
+  {
+    "id": "pancakes",
+    "names": { "en": "Pancakes", "fr": "Crêpes épaisses", "es": "Tortitas" },
+    "ingredients": ["flour", "eggs", "milk", "sugar", "butter"],
+    "steps": {
+      "en": ["Whisk flour, sugar, eggs and milk into a smooth batter.", "Rest the batter 10 minutes.", "Cook spoonfuls in a buttered pan until bubbles form on top.", "Flip and cook one more minute."],
+      "fr": ["Fouettez farine, sucre, œufs et lait en pâte lisse.", "Laissez reposer 10 minutes.", "Versez des louches dans une poêle beurrée jusqu'à apparition de bulles.", "Retournez et poursuivez une minute."],
+      "es": ["Bate harina, azúcar, huevos y leche hasta que quede fina.", "Deja reposar la masa 10 minutos.", "Vierte cucharadas en la sartén con mantequilla hasta que salgan burbujas.", "Da la vuelta y cocina un minuto más."]
+    }
+  },
+  {
+    "id": "overnight-oats",
+    "names": { "en": "Overnight oats", "fr": "Flocons d'avoine au frigo", "es": "Avena de un día para otro" },
+    "ingredients": ["oats", "milk", "yogurt", "honey"],
+    "steps": {
+      "en": ["Mix equal parts oats and milk in a jar.", "Stir in a spoon of yogurt and a drizzle of honey.", "Refrigerate overnight.", "Eat cold, straight from the jar."],
+      "fr": ["Mélangez à parts égales flocons d'avoine et lait dans un bocal.", "Ajoutez une cuillère de yaourt et un filet de miel.", "Réfrigérez toute la nuit.", "Dégustez froid, directement dans le bocal."],
+      "es": ["Mezcla avena y leche a partes iguales en un tarro.", "Añade una cucharada de yogur y un chorrito de miel.", "Refrigera toda la noche.", "Cómelo frío, directo del tarro."]
+    }
+  },
+  {
+    "id": "tuna-sandwich",
+    "names": { "en": "Tuna salad sandwich", "fr": "Sandwich au thon", "es": "Sándwich de atún" },
+    "ingredients": ["tuna", "mayonnaise", "bread", "onion"],
+    "steps": {
+      "en": ["Drain the tuna well.", "Mix with mayonnaise and finely chopped onion.", "Season with pepper and a squeeze of lemon if you have one.", "Spread between two slices of bread."],
+      "fr": ["Égouttez bien le thon.", "Mélangez avec la mayonnaise et l'oignon finement haché.", "Poivrez et ajoutez un filet de citron si vous en avez.", "Garnissez deux tranches de pain."],
+      "es": ["Escurre bien el atún.", "Mézclalo con mayonesa y cebolla muy picada.", "Sazona con pimienta y un chorrito de limón si tienes.", "Reparte entre dos rebanadas de pan."]
+    }
+  },
+  {
+    "id": "chickpea-curry",
+    "names": { "en": "Chickpea curry", "fr": "Curry de pois chiches", "es": "Curry de garbanzos" },
+    "ingredients": ["chickpeas", "coconut milk", "curry powder", "onion", "garlic", "rice"],
+    "steps": {
+      "en": ["Fry chopped onion and garlic until soft.", "Add curry powder and cook 30 seconds to wake it up.", "Add chickpeas and coconut milk, simmer 15 minutes.", "Serve with rice."],
+      "fr": ["Faites revenir l'oignon et l'ail hachés.", "Ajoutez le curry et faites-le chauffer 30 secondes.", "Ajoutez les pois chiches et le lait de coco, mijotez 15 minutes.", "Servez avec du riz."],
+      "es": ["Sofríe la cebolla y el ajo picados.", "Añade el curry y tuéstalo 30 segundos.", "Incorpora los garbanzos y la leche de coco, cuece 15 minutos.", "Sirve con arroz."]
+    }
+  },
+  {
+    "id": "baked-potatoes",
+    "names": { "en": "Baked potatoes with cheese", "fr": "Pommes de terre au four", "es": "Patatas al horno con queso" },
+    "ingredients": ["potatoes", "butter", "cheese", "olive oil"],
+    "steps": {
+      "en": ["Prick the potatoes and rub with oil and salt.", "Bake at 200°C for about an hour until soft inside.", "Split open, add butter and grated cheese.", "Return to the oven 5 minutes to melt."],
+      "fr": ["Piquez les pommes de terre, frottez-les d'huile et de sel.", "Enfournez à 200°C environ une heure.", "Ouvrez-les, ajoutez beurre et fromage râpé.", "Remettez 5 minutes au four pour faire fondre."],
+      "es": ["Pincha las patatas y úntalas con aceite y sal.", "Hornea a 200°C alrededor de una hora.", "Ábrelas, añade mantequilla y queso rallado.", "Vuelve a hornear 5 minutos para fundirlo."]
+    }
+  },
+  {
+    "id": "vegetable-soup",
+    "names": { "en": "Vegetable soup", "fr": "Soupe de légumes", "es": "Sopa de verduras" },
+    "ingredients": ["carrots", "potatoes", "onion", "celery", "broth"],
+    "steps": {
+      "en": ["Dice all the vegetables to a similar size.", "Soften the onion first, then add the rest.", "Pour in broth to cover and simmer 20 minutes.", "Blend for a smooth soup, or leave chunky."],
+      "fr": ["Coupez tous les légumes en dés de taille égale.", "Faites suer l'oignon, puis ajoutez le reste.", "Couvrez de bouillon et laissez mijoter 20 minutes.", "Mixez pour un velouté, ou laissez en morceaux."],
+      "es": ["Corta todas las verduras en dados del mismo tamaño.", "Pocha primero la cebolla y añade el resto.", "Cubre con caldo y cuece 20 minutos.", "Tritura para una crema, o déjala con trozos."]
+    }
+  },
+  {
+    "id": "carbonara",
+    "names": { "en": "Pasta carbonara", "fr": "Pâtes à la carbonara", "es": "Pasta carbonara" },
+    "ingredients": ["pasta", "eggs", "bacon", "parmesan"],
+    "steps": {
+      "en": ["Cook the pasta, saving a cup of the water.", "Fry the bacon until crisp.", "Beat eggs with grated parmesan.", "Off the heat, toss pasta with bacon then the egg mix, loosening with pasta water."],
+      "fr": ["Cuisez les pâtes, réservez un verre d'eau de cuisson.", "Faites griller les lardons.", "Battez les œufs avec le parmesan râpé.", "Hors du feu, mélangez pâtes, lardons puis les œufs, en détendant avec l'eau de cuisson."],
+      "es": ["Cuece la pasta y reserva un vaso del agua.", "Fríe el bacon hasta que esté crujiente.", "Bate los huevos con el parmesano rallado.", "Fuera del fuego, mezcla la pasta con el bacon y luego el huevo, aflojando con el agua."]
+    }
+  },
+  {
+    "id": "bean-tacos",
+    "names": { "en": "Black bean tacos", "fr": "Tacos aux haricots noirs", "es": "Tacos de frijoles" },
+    "ingredients": ["beans", "tortillas", "onion", "cheese", "cumin"],
+    "steps": {
+      "en": ["Fry chopped onion until golden.", "Add drained beans and cumin, mash roughly.", "Warm the tortillas in a dry pan.", "Fill with the beans and top with cheese."],
+      "fr": ["Faites dorer l'oignon haché.", "Ajoutez les haricots égouttés et le cumin, écrasez grossièrement.", "Réchauffez les tortillas dans une poêle sèche.", "Garnissez de haricots et de fromage."],
+      "es": ["Sofríe la cebolla picada hasta dorarla.", "Añade los frijoles escurridos y el comino, aplasta un poco.", "Calienta las tortillas en una sartén seca.", "Rellena con los frijoles y cubre con queso."]
+    }
+  },
+  {
+    "id": "greek-salad",
+    "names": { "en": "Greek salad", "fr": "Salade grecque", "es": "Ensalada griega" },
+    "ingredients": ["cucumber", "tomatoes", "olives", "feta", "olive oil"],
+    "steps": {
+      "en": ["Cut cucumber and tomatoes into rough chunks.", "Add olives and crumbled feta.", "Dress with olive oil, salt and pepper.", "Let it sit 10 minutes before eating."],
+      "fr": ["Coupez le concombre et les tomates en gros morceaux.", "Ajoutez les olives et la feta émiettée.", "Assaisonnez d'huile d'olive, sel et poivre.", "Laissez reposer 10 minutes avant de servir."],
+      "es": ["Corta el pepino y los tomates en trozos grandes.", "Añade las aceitunas y el feta desmenuzado.", "Aliña con aceite de oliva, sal y pimienta.", "Deja reposar 10 minutos antes de comer."]
+    }
+  },
+  {
+    "id": "banana-smoothie",
+    "names": { "en": "Banana smoothie", "fr": "Smoothie à la banane", "es": "Batido de plátano" },
+    "ingredients": ["banana", "milk", "yogurt", "honey"],
+    "steps": {
+      "en": ["Break the banana into a blender.", "Add milk, yogurt and a spoon of honey.", "Blend until smooth.", "Use a frozen banana for a thicker result."],
+      "fr": ["Coupez la banane dans un blender.", "Ajoutez le lait, le yaourt et une cuillère de miel.", "Mixez jusqu'à consistance lisse.", "Une banane congelée donne un résultat plus épais."],
+      "es": ["Trocea el plátano en la batidora.", "Añade leche, yogur y una cucharada de miel.", "Bate hasta que quede suave.", "Con el plátano congelado queda más espeso."]
+    }
+  },
+  {
+    "id": "roast-chicken-veg",
+    "names": { "en": "Roast chicken and vegetables", "fr": "Poulet rôti aux légumes", "es": "Pollo asado con verduras" },
+    "ingredients": ["chicken", "potatoes", "carrots", "olive oil", "garlic"],
+    "steps": {
+      "en": ["Heat the oven to 200°C.", "Toss chopped potatoes, carrots and whole garlic cloves in oil.", "Sit the chicken on top and season generously.", "Roast about 1 hour 20, until the juices run clear."],
+      "fr": ["Préchauffez le four à 200°C.", "Enrobez d'huile les pommes de terre, carottes et gousses d'ail.", "Posez le poulet dessus et assaisonnez généreusement.", "Rôtissez environ 1 h 20, jusqu'à ce que le jus soit clair."],
+      "es": ["Calienta el horno a 200°C.", "Mezcla con aceite las patatas, zanahorias y ajos enteros.", "Coloca el pollo encima y sazona bien.", "Asa 1 h 20 aproximadamente, hasta que el jugo salga claro."]
+    }
+  },
+  {
+    "id": "mushroom-risotto",
+    "names": { "en": "Mushroom risotto", "fr": "Risotto aux champignons", "es": "Risotto de champiñones" },
+    "ingredients": ["rice", "mushrooms", "onion", "broth", "parmesan", "butter"],
+    "steps": {
+      "en": ["Fry sliced mushrooms until browned, set aside.", "Soften the onion, add the rice and toast 1 minute.", "Add hot broth a ladle at a time, stirring until absorbed.", "After about 18 minutes stir in mushrooms, butter and parmesan."],
+      "fr": ["Faites dorer les champignons émincés, réservez.", "Faites suer l'oignon, ajoutez le riz et nacrez 1 minute.", "Versez le bouillon chaud louche par louche en remuant.", "Après 18 minutes, incorporez champignons, beurre et parmesan."],
+      "es": ["Dora los champiñones en láminas y resérvalos.", "Pocha la cebolla, añade el arroz y tuéstalo 1 minuto.", "Ve añadiendo caldo caliente cazo a cazo, removiendo.", "A los 18 minutos incorpora champiñones, mantequilla y parmesano."]
+    }
+  },
+  {
+    "id": "pb-banana-toast",
+    "names": { "en": "Peanut butter banana toast", "fr": "Tartine beurre de cacahuète et banane", "es": "Tostada de crema de cacahuete y plátano" },
+    "ingredients": ["bread", "peanut butter", "banana", "honey"],
+    "steps": {
+      "en": ["Toast the bread well.", "Spread peanut butter while still warm.", "Top with sliced banana and a drizzle of honey."],
+      "fr": ["Faites bien griller le pain.", "Étalez le beurre de cacahuète pendant qu'il est chaud.", "Ajoutez des rondelles de banane et un filet de miel."],
+      "es": ["Tuesta bien el pan.", "Unta la crema de cacahuete mientras está caliente.", "Cubre con rodajas de plátano y un chorrito de miel."]
+    }
+  },
+  {
+    "id": "shakshuka",
+    "names": { "en": "Shakshuka", "fr": "Shakshuka", "es": "Shakshuka" },
+    "ingredients": ["eggs", "tomatoes", "bell pepper", "onion", "paprika", "olive oil"],
+    "steps": {
+      "en": ["Soften chopped onion and pepper in olive oil.", "Add tomatoes and paprika, simmer 15 minutes until thick.", "Make wells in the sauce and crack in the eggs.", "Cover and cook until the whites set but the yolks stay soft."],
+      "fr": ["Faites suer l'oignon et le poivron dans l'huile d'olive.", "Ajoutez les tomates et le paprika, mijotez 15 minutes.", "Creusez des puits dans la sauce et cassez-y les œufs.", "Couvrez et cuisez jusqu'à ce que les blancs prennent."],
+      "es": ["Pocha la cebolla y el pimiento en aceite de oliva.", "Añade el tomate y el pimentón, cuece 15 minutos.", "Haz huecos en la salsa y casca ahí los huevos.", "Tapa y cocina hasta que cuaje la clara."]
+    }
+  },
+  {
+    "id": "salmon-rice",
+    "names": { "en": "Salmon with rice and spinach", "fr": "Saumon, riz et épinards", "es": "Salmón con arroz y espinacas" },
+    "ingredients": ["salmon", "rice", "lemon", "olive oil", "spinach"],
+    "steps": {
+      "en": ["Start the rice cooking.", "Season the salmon and pan-fry skin-side down 4 minutes.", "Flip for 2 minutes more.", "Wilt the spinach in the same pan and finish with lemon."],
+      "fr": ["Lancez la cuisson du riz.", "Assaisonnez le saumon et saisissez-le côté peau 4 minutes.", "Retournez-le 2 minutes de plus.", "Faites tomber les épinards dans la poêle et finissez au citron."],
+      "es": ["Pon el arroz a cocer.", "Sazona el salmón y hazlo por el lado de la piel 4 minutos.", "Dale la vuelta 2 minutos más.", "Saltea las espinacas en la misma sartén y termina con limón."]
+    }
+  },
+  {
+    "id": "minestrone",
+    "names": { "en": "Minestrone", "fr": "Minestrone", "es": "Minestrone" },
+    "ingredients": ["pasta", "tomatoes", "beans", "carrots", "celery", "broth"],
+    "steps": {
+      "en": ["Soften diced carrot and celery in oil.", "Add tomatoes, beans and broth, simmer 20 minutes.", "Add a handful of small pasta and cook until tender.", "Thin with more broth — it thickens as it stands."],
+      "fr": ["Faites suer la carotte et le céleri en dés.", "Ajoutez tomates, haricots et bouillon, mijotez 20 minutes.", "Ajoutez une poignée de petites pâtes et cuisez.", "Allongez de bouillon — la soupe épaissit en reposant."],
+      "es": ["Pocha la zanahoria y el apio en dados.", "Añade tomate, alubias y caldo, cuece 20 minutos.", "Incorpora un puñado de pasta pequeña y cuece.", "Aclara con más caldo: espesa al reposar."]
+    }
+  },
+  {
+    "id": "yogurt-berry-bowl",
+    "names": { "en": "Yogurt and berry bowl", "fr": "Bol de yaourt aux fruits rouges", "es": "Bol de yogur con frutos rojos" },
+    "ingredients": ["yogurt", "berries", "honey", "oats"],
+    "steps": {
+      "en": ["Spoon yogurt into a bowl.", "Top with berries and a handful of oats.", "Finish with honey."],
+      "fr": ["Versez le yaourt dans un bol.", "Ajoutez les fruits rouges et une poignée de flocons d'avoine.", "Terminez par un filet de miel."],
+      "es": ["Pon el yogur en un bol.", "Añade los frutos rojos y un puñado de avena.", "Termina con miel."]
+    }
+  }
+]

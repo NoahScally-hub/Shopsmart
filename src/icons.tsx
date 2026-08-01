@@ -95,6 +95,14 @@ export const IconUpload = ({ size }: { size?: number }) => (
   </I>
 );
 
+export const IconPot = ({ size }: { size?: number }) => (
+  <I size={size}>
+    <path d="M4 10h16v4a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-4z" />
+    <path d="M20 11.5h1.5a1.5 1.5 0 0 1 0 3H20M4 11.5H2.5a1.5 1.5 0 0 0 0 3H4" />
+    <path d="M9 6.5c0-1 1-1.5 1-2.5M14 6.5c0-1 1-1.5 1-2.5" />
+  </I>
+);
+
 export const IconTrend = ({ size }: { size?: number }) => (
   <I size={size}>
     <path d="M3.5 20.5h17" />

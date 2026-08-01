@@ -8,6 +8,7 @@ import {
   IconTag,
   IconRoute,
   IconBell,
+  IconPot,
   IconTrend,
   IconSliders
 } from "./icons";
@@ -20,8 +21,17 @@ import SettingsView from "./views/SettingsView";
 // Insights reads price history from Supabase; lazy so supabase-js stays out
 // of the initial bundle (same reason as CloudSync).
 const InsightsView = lazy(() => import("./views/InsightsView"));
+// Lazy so the recipe dataset ships only for users who turn the feature on.
+const RecipesView = lazy(() => import("./views/RecipesView"));
 
-type Tab = "lists" | "prices" | "plan" | "alerts" | "insights" | "settings";
+type Tab =
+  | "lists"
+  | "prices"
+  | "plan"
+  | "alerts"
+  | "insights"
+  | "recipes"
+  | "settings";
 
 const ICONS: Record<Tab, ReactNode> = {
   lists: <IconList />,
@@ -29,6 +39,7 @@ const ICONS: Record<Tab, ReactNode> = {
   plan: <IconRoute />,
   alerts: <IconBell />,
   insights: <IconTrend />,
+  recipes: <IconPot />,
   settings: <IconSliders />
 };
 
@@ -59,6 +70,7 @@ export default function App() {
     { id: "plan", visible: settings.features.plan },
     { id: "alerts", visible: settings.features.alerts, badge: saleCount },
     { id: "insights", visible: settings.features.insights },
+    { id: "recipes", visible: settings.features.recipes },
     { id: "settings", visible: true }
   ];
   const visibleTabs = tabs.filter((x) => x.visible);
@@ -80,6 +92,11 @@ export default function App() {
         {active === "insights" && (
           <Suspense fallback={null}>
             <InsightsView />
+          </Suspense>
+        )}
+        {active === "recipes" && (
+          <Suspense fallback={null}>
+            <RecipesView />
           </Suspense>
         )}
         {active === "settings" && <SettingsView />}

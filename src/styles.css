@@ -388,6 +388,46 @@ td.best-price {
   color: var(--text);
 }
 
+/* ---------- recipes ---------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 0.78rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* Ingredients already on the list carry the accent; the text label is what
+   identifies them, so colour is reinforcement rather than the only signal. */
+.chip.has {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.steps {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.steps li::marker {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ---------- charts ---------- */
 
 .chart {

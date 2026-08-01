@@ -6,6 +6,7 @@
     "plan": "Plan",
     "alerts": "Alerts",
     "insights": "Insights",
+    "recipes": "Recipes",
     "settings": "Settings"
   },
   "common": {
@@ -77,6 +78,21 @@
     "empty": "No items on your lists are on sale right now. Mark a price as \"on sale\" in the Prices tab.",
     "saleAt": "on sale at {{store}}"
   },
+  "recipes": {
+    "title": "Recipe ideas",
+    "noList": "Create a shopping list first — recipes are suggested from what's on it.",
+    "basedOn": "Ranked by what's already on \"{{list}}\".",
+    "usesCount_one": "uses {{count}} item you have",
+    "usesCount_other": "uses {{count}} items you have",
+    "showSteps": "Steps",
+    "hideSteps": "Hide steps",
+    "addMissing_one": "Add {{count}} missing item",
+    "addMissing_other": "Add {{count}} missing items",
+    "nothingMissing": "You have everything.",
+    "added_one": "Added {{count}} item to {{list}}",
+    "added_other": "Added {{count}} items to {{list}}",
+    "showMore": "Show {{count}} more recipes"
+  },
   "insights": {
     "title": "Insights",
     "empty": "No shopping trips recorded yet.",
@@ -133,7 +149,7 @@
     "fAlerts": "Sale alerts",
     "fInsights": "Insights",
     "fVoice": "Voice dictation",
-    "fRecipes": "Recipe suggestions (coming soon)",
+    "fRecipes": "Recipe suggestions",
     "gasPrice": "Gas price per liter",
     "fuelUse": "Car consumption (L/100 km)",
     "currency": "Currency symbol",
