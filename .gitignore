@@ -2,6 +2,10 @@ node_modules
 dist
 dev-dist
 *.tsbuildinfo
+
+# Firecrawl CLI scrape cache — never commit scraped third-party content,
+# especially with this repo public.
+.firecrawl
 *.local
 .env
 .env.*
