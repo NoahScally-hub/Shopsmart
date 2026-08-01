@@ -14,10 +14,6 @@
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]
     },
-    "firecrawl": {
-      "type": "http",
-      "url": "https://mcp.firecrawl.dev/v2/mcp-oauth"
-    },
     "shadcn-ui": {
       "command": "npx",
       "args": ["-y", "@jpisnice/shadcn-ui-mcp-server"]

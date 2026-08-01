@@ -121,7 +121,7 @@ loads only when Settings opens — the initial app bundle stays ~122 kB gzipped.
 | `github` (local binary) | Repo management, issues, PRs | Free — a fine-grained Personal Access Token (GitHub's OAuth server doesn't support the Dynamic Client Registration Claude Code's remote-MCP OAuth expects, so the local server + PAT is what actually works here) |
 | `supabase` | Run migrations, query the relational DB | Free Supabase account; authenticates over OAuth via `claude /mcp` — no API key stored |
 | `playwright` | Web scraping via a real local browser — unlimited and key-free, the fallback when Firecrawl credits run out | Nothing |
-| `firecrawl` | Scraping and search that returns clean markdown, handling JS-rendered pages for you | Free account; authenticates over OAuth via `claude /mcp` — no API key stored (1,000 credits/month, no card) |
+| `firecrawl` | Scraping and search that returns clean markdown, handling JS-rendered pages for you | Free account; configured **per-developer outside this repo** — see below (1,000 credits/month, no card) |
 | `shadcn-ui` | UI component reference for design work | Nothing |
 
 Restart Claude Code after editing `.mcp.json` and approve the servers when
@@ -130,14 +130,25 @@ prompted.
 - **Supabase** is remote and uses OAuth: run `claude` in a **regular
   terminal** (not an IDE extension), then `/mcp`, select `supabase`, choose
   *Authenticate*.
-- **Firecrawl** needs a free account at [firecrawl.dev](https://www.firecrawl.dev),
-  then authenticates over OAuth like Supabase: `/mcp` → `firecrawl` →
-  *Authenticate*. It uses the hosted `mcp-oauth` endpoint so no API key is
-  stored anywhere — which matters because `.mcp.json` is committed and this
-  repo is public. Firecrawl's own docs show a local `npx firecrawl-mcp` setup
-  with the key inlined in the config; don't copy that here. The `firecrawl`
-  CLI (`npx firecrawl-cli`) is a separate, optional command-line path and
-  keeps its own stored credentials.
+- **Firecrawl** is deliberately **not** in `.mcp.json`. It is keyed per
+  developer, and this repo is public, so the key must never live in a tracked
+  file. Sign up free at [firecrawl.dev](https://www.firecrawl.dev), then
+  install it at user level with the key sent as a header:
+
+  ```bash
+  npx -y firecrawl-cli login --browser
+  npx -y firecrawl-cli env            # writes FIRECRAWL_API_KEY to .env (gitignored)
+  npx -y add-mcp "https://mcp.firecrawl.dev/v2/mcp" --name firecrawl \
+    --transport http --agent claude-code --global \
+    --header "Authorization: Bearer $FIRECRAWL_API_KEY"
+  ```
+
+  That lands in `~/.claude.json`, outside the repo. **Do not run
+  `firecrawl-cli setup mcp`** — it writes the raw key into the project's
+  `.mcp.json` as `https://mcp.firecrawl.dev/<your-key>/v2/mcp`, which on a
+  public repo is an immediate credential leak. That also contradicts
+  Firecrawl's own docs, which say credentials belong in an Authorization
+  header, "never in the URL itself".
 - **GitHub** runs the official [github-mcp-server](https://github.com/github/github-mcp-server)
   binary locally (downloaded to `%LOCALAPPDATA%\github-mcp-server`),
   authenticated with a fine-grained Personal Access Token set as the
