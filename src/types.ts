@@ -26,6 +26,12 @@ export interface Store {
   remoteId?: number;
   name: string;
   distanceKm: number;
+  /** Set when the distance was derived from a looked-up address. Local only —
+   *  distanceKm is what syncs, since the Supabase stores table has no
+   *  coordinate columns. */
+  address?: string;
+  lat?: number;
+  lon?: number;
 }
 
 export interface PriceEntry {

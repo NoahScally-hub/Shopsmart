@@ -7,8 +7,9 @@ import {
   type Theme,
   type FeatureToggles
 } from "../settings";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { downloadFile } from "../csv";
+import { currentPosition } from "../geo";
 
 // supabase-js is ~60 kB gzipped — keep it out of the initial bundle and load it
 // only when the user actually opens Settings.
@@ -24,6 +25,22 @@ const ACCENTS: Array<{ id: Accent; color: string }> = [
 export default function SettingsView() {
   const { t } = useTranslation();
   const { settings, update } = useSettings();
+  const [locating, setLocating] = useState(false);
+  const [locationError, setLocationError] = useState("");
+
+  const useMyLocation = async () => {
+    setLocating(true);
+    setLocationError("");
+    try {
+      const home = await currentPosition();
+      update({ home });
+    } catch {
+      // Covers both an outright denial and an unsupported browser.
+      setLocationError(t("settings.locationDenied"));
+    } finally {
+      setLocating(false);
+    }
+  };
 
   const setFeature = (key: keyof FeatureToggles, value: boolean) =>
     update({ features: { ...settings.features, [key]: value } });
@@ -148,6 +165,35 @@ export default function SettingsView() {
             onChange={(e) => update({ currency: e.target.value })}
           />
         </label>
+      </div>
+
+      <div className="settings-group">
+        <strong>{t("settings.location")}</strong>
+        <p className="muted" style={{ padding: "4px 0 0" }}>
+          {t("settings.locationNote")}
+        </p>
+        <div className="row" style={{ marginTop: 10, marginBottom: 8 }}>
+          <button onClick={useMyLocation} disabled={locating}>
+            {locating ? t("settings.locating") : t("settings.useMyLocation")}
+          </button>
+          {settings.home && (
+            <button className="danger" onClick={() => update({ home: null })}>
+              {t("settings.clearHome")}
+            </button>
+          )}
+        </div>
+        <p className="muted" style={{ paddingBottom: 12 }}>
+          {locationError ? (
+            <span style={{ color: "var(--danger)" }}>{locationError}</span>
+          ) : settings.home ? (
+            t("settings.homeSet", {
+              lat: settings.home.lat.toFixed(4),
+              lon: settings.home.lon.toFixed(4)
+            })
+          ) : (
+            t("settings.homeNotSet")
+          )}
+        </p>
       </div>
 
       <Suspense fallback={<div className="settings-group" style={{ height: 96 }} />}>

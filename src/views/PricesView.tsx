@@ -3,8 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useLiveQuery } from "dexie-react-hooks";
 import db, { normalizeItemName, recordTombstone } from "../db";
 import { useSettings } from "../settings";
-import { IconDownload, IconTrash, IconUpload, IconX } from "../icons";
+import { IconDownload, IconPin, IconTrash, IconUpload, IconX } from "../icons";
 import { csvToPrices, downloadFile, pricesToCsv } from "../csv";
+import { geocode, haversineKm } from "../geo";
 
 export default function PricesView() {
   const { t } = useTranslation();
@@ -21,6 +22,46 @@ export default function PricesView() {
   const [onSale, setOnSale] = useState(false);
   const [importMsg, setImportMsg] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
+  const [locatingId, setLocatingId] = useState<number | null>(null);
+  const [addressDraft, setAddressDraft] = useState("");
+  const [lookupBusy, setLookupBusy] = useState(false);
+  const [lookupError, setLookupError] = useState("");
+
+  const openLocate = (id: number, current?: string) => {
+    setLocatingId(id);
+    setAddressDraft(current ?? "");
+    setLookupError("");
+  };
+
+  const lookupAddress = async (storeId: number) => {
+    const query = addressDraft.trim();
+    if (!query) return;
+    if (!settings.home) {
+      setLookupError(t("prices.needHome"));
+      return;
+    }
+    setLookupBusy(true);
+    setLookupError("");
+    try {
+      const hit = await geocode(query);
+      if (!hit) {
+        setLookupError(t("prices.notFound"));
+        return;
+      }
+      const km = haversineKm(settings.home, hit);
+      await db.stores.update(storeId, {
+        address: query,
+        lat: hit.lat,
+        lon: hit.lon,
+        distanceKm: Math.round(km * 10) / 10
+      });
+      setLocatingId(null);
+    } catch {
+      setLookupError(t("prices.lookupFailed"));
+    } finally {
+      setLookupBusy(false);
+    }
+  };
 
   const addStore = async (e: FormEvent) => {
     e.preventDefault();
@@ -169,19 +210,59 @@ export default function PricesView() {
       </form>
       <ul className="cards">
         {stores?.map((s) => (
-          <li key={s.id} className="card row spread">
-            <span className="grow">
-              <strong>{s.name}</strong>{" "}
-              <span className="muted">{s.distanceKm} km</span>
-            </span>
-            <button
-              className="ghost danger"
-              title={t("common.delete")}
-              aria-label={t("common.delete")}
-              onClick={() => removeStore(s.id!, s.name)}
-            >
-              <IconTrash size={17} />
-            </button>
+          <li key={s.id} className="card">
+            <div className="row spread" style={{ marginBottom: 0 }}>
+              <span className="grow">
+                <strong>{s.name}</strong>{" "}
+                <span className="muted">{s.distanceKm} km</span>
+                {s.address && <div className="muted">{s.address}</div>}
+              </span>
+              <button
+                className="ghost"
+                title={t("prices.setAddress")}
+                aria-label={t("prices.setAddress")}
+                onClick={() =>
+                  locatingId === s.id ? setLocatingId(null) : openLocate(s.id!, s.address)
+                }
+              >
+                <IconPin size={17} />
+              </button>
+              <button
+                className="ghost danger"
+                title={t("common.delete")}
+                aria-label={t("common.delete")}
+                onClick={() => removeStore(s.id!, s.name)}
+              >
+                <IconTrash size={17} />
+              </button>
+            </div>
+
+            {locatingId === s.id && (
+              <div style={{ marginTop: 10 }}>
+                <div className="row" style={{ marginBottom: 6 }}>
+                  <input
+                    className="grow"
+                    value={addressDraft}
+                    onChange={(e) => setAddressDraft(e.target.value)}
+                    placeholder={t("prices.addressPlaceholder")}
+                  />
+                  <button
+                    className="primary"
+                    disabled={lookupBusy}
+                    onClick={() => lookupAddress(s.id!)}
+                  >
+                    {lookupBusy ? t("prices.looking") : t("prices.find")}
+                  </button>
+                </div>
+                <p className="muted">
+                  {lookupError ? (
+                    <span style={{ color: "var(--danger)" }}>{lookupError}</span>
+                  ) : (
+                    t("prices.addressHint")
+                  )}
+                </p>
+              </div>
+            )}
           </li>
         ))}
       </ul>

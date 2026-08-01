@@ -28,6 +28,9 @@ export interface Settings {
   gasPricePerL: number;
   fuelLper100km: number;
   currency: string;
+  /** Home coordinates, used to measure store distances. Stays on this device
+   *  — never synced. */
+  home: { lat: number; lon: number } | null;
 }
 
 export const DEFAULTS: Settings = {
@@ -46,7 +49,8 @@ export const DEFAULTS: Settings = {
   },
   gasPricePerL: 1.6,
   fuelLper100km: 8,
-  currency: "$"
+  currency: "$",
+  home: null
 };
 
 const KEY = "shopsmart-settings";

@@ -37,6 +37,7 @@ ShopSmart is a **Progressive Web App** built with React + TypeScript + Vite:
 | Feature toggles — hidden features remove their tab entirely | ✅ |
 | Insights: monthly spend, store ranking, sale share, price history | ✅ |
 | Recipe suggestions ranked by what's on your list (off by default) | ✅ |
+| Auto store distances from an address (OpenStreetMap + your home location) | ✅ |
 | Backup: export all data as JSON | ✅ |
 | Supabase account + cloud sync across devices | ✅ |
 | Scraped store prices via Playwright MCP | 🔜 |
@@ -146,6 +147,18 @@ prompted.
   free approach used here is in-app alerts (badge + Alerts tab) computed
   locally, which also works offline.
 - **Route optimization**: true multi-stop routing needs a routing API with
-  keys; the plan uses straight round-trip distances you enter per store, which
-  is transparent and predictable. Can be upgraded to OSRM's free demo server
-  later.
+  keys. Store distances can now be filled in automatically — set your home
+  location in Settings, then tap the pin beside a store and type its address.
+  ShopSmart geocodes it with OpenStreetMap's Nominatim and measures the
+  straight-line (haversine) distance. That's deliberately not road distance:
+  road routing needs a heavier free-tier service, and straight-line is
+  accurate enough to rank stores a few km apart. You can always override the
+  number by hand.
+
+  Nominatim is a free community service, so the client respects its usage
+  policy: one request per second maximum, and every result cached (including
+  misses) so the same address is never looked up twice. Your home coordinates
+  stay in local storage on your device and are never uploaded — note that
+  store coordinates are also local-only, so distances re-derived on a second
+  device need the address entered again there (`distance_km` itself does
+  sync).
